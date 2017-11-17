@@ -27,7 +27,6 @@
 int		ft_printf(const char *str, ...)
 {
 	va_list args;
-	// void *input;
 	int i;
 
 	i = -1;
@@ -35,14 +34,10 @@ int		ft_printf(const char *str, ...)
 	while (str[++i] != '\0')
 	{
 		if (str[i] == '%')
-		{
-			// input = va_arg(args, char*);
 			parse_flags(&i, str, args);
-		}
 		else
 			write(1, &str[i], 1);
 	}
-	// printf("%s", input);
 	va_end(args);
 	return 0;
 }

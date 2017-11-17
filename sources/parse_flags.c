@@ -13,8 +13,7 @@
 # include "printf.h"
 
 /*
-** You have to manage the following conversions: SpDOUXC
-** • You must manage %%
+** You have to manage the following conversions: SDOUC (ls ld lo lu lc)
 ** • You must manage the flags #0-+ and space
 ** • You must manage the minimum field-width
 ** • You must manage the precision
@@ -23,7 +22,7 @@
 
 /*
 ** Completed: s d i o u x c
-** In Progress:
+** In Progress: p X %%
 */
 
 void	parse_flags(int *i, const char *str, va_list args)
