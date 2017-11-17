@@ -21,7 +21,7 @@
 ** the parse_flags function to help perform necessary edits.
 ** • Int i is used to track the current str that was passed being read.
 ** By passing its address I can skip outputting the flags and output
-** it elsewhere in my other functions.
+** it elsewhere in my other functions. 
 */
 
 int		ft_printf(const char *str, ...)
