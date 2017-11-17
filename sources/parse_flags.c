@@ -29,12 +29,9 @@
 void	parse_flags(int *i, const char *str, va_list args)
 {
 	*i = *i + 1;
-	if (str[*i] == 'd' || str[*i] == 'i')
-		flags_int(args);
-	else if (str[*i] == 'u')
-		flags_uint(args);
-	else if (str[*i] == 'o')
-		flags_oct(args);
-	else if (str[*i] == 's')
-		flags_str(args);
+	str[*i] == 'd' ? flags_int(args) : 0;
+	str[*i] == 'i' ? flags_int(args) : 0;
+	str[*i] == 'u' ? flags_uint(args) : 0;
+	str[*i] == 'o' ? flags_oct(args) : 0;
+	str[*i] == 's' ? flags_str(args) : 0;
 }
