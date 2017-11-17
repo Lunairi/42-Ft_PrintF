@@ -1,0 +1,309 @@
+
+<!-- saved from url=(0089)https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>printf format identifiers.</title>
+
+<script language="JavaScript">
+</script>
+</head>
+<body bgcolor="#ffffcc">
+<hr>
+<center>
+<h1>printf format identifiers.</h1>
+</center>
+<hr>
+<p>
+printf formatting is controlled by 'format identifiers' which, are shown
+below in their simplest form.
+</p><p>
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+    %d %i     Decimal signed integer.
+    %o	      Octal integer.
+    %x %X     Hex integer.
+    %u	      Unsigned integer.
+    %c	      Character.
+    %s	      String. See below.
+    %f	      double
+    %e %E     double.
+    %g %G     double.
+    %p        pointer.
+    %n	      Number of characters written by this printf.
+              No argument expected.
+    %%	      %. No argument expected.
+
+</pre>
+</td>
+</tr><tr>
+</tr></tbody></table>
+</center>
+<p>
+
+These identifiers actually have upto 6 parts as shown in the table below.
+They MUST be used in the order shown.
+</p><p>
+
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr align="center">
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#percent">%</a></td>
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#flags">Flags</a></td>
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#width">Minimum field width</a></td>
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#period">Period</a></td>
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#precision">Precision. Maximum field width</a></td>
+<td><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#id">Argument type</a></td>
+</tr>
+<tr align="center">
+<td>Required</td>
+<td>Optional</td>
+<td>Optional</td>
+<td>Optional</td>
+<td>Optional</td>
+<td>Required</td>
+</tr></tbody></table>
+</center>
+<p>
+
+<a name="percent">
+</a></p><hr><a name="percent">
+<h2>%</h2>
+The % marks the start and therfore is manatory.
+</a><p><a name="percent">
+
+</a><a name="flags">
+</a></p><hr><a name="flags">
+<h2>Flags</h2>
+The format identifers can be altered from their default function by 
+applying the following <b>flags</b>:
+<p>
+
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+   -      Left justify.
+   0  	  Field is padded with 0's instead of blanks.
+   +	  Sign of number always O/P.
+   blank  Positive values begin with a blank.
+   # 	  Various uses:
+	  %#o (Octal) 0 prefix inserted.
+	  %#x (Hex)   0x prefix added to non-zero values.
+	  %#X (Hex)   0X prefix added to non-zero values.
+	  %#e         Always show the decimal point.
+	  %#E         Always show the decimal point.
+	  %#f         Always show the decimal point.
+	  %#g         Always show the decimal point trailing 
+	  	      zeros not removed.
+	  %#G         Always show the decimal point trailing
+		      zeros not removed.
+          
+</pre>
+</td>
+</tr>
+</tbody></table>
+</center>
+
+</a><ul><a name="flags">
+</a><li><a name="flags">The flags must follow the </a><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#percent">%</a>.
+</li><li>Where it makes sense, more than one flag can be used.
+</li></ul>
+Here are a few more examples.
+<p>
+
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+    printf(" %-10d \n", number);
+    printf(" %010d \n", number);
+    printf(" %-#10x \n", number);  
+    printf(" %#x \n", number);
+</pre>
+</td>
+</tr>
+</tbody></table>
+</center>
+
+<p>
+<a name="width">
+</a></p><hr><a name="width">
+<h2>Minimum field width.</h2>
+By default the width of a field will be the minimum required to hold
+the data. If you want to increase the field width you can use the
+following syntax.
+<p>
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+  main()
+  {
+      int number    =  5;
+      char *pointer = "little";
+
+      printf("Here is a number-%4d-and a-%10s-word.\n", number, pointer);
+  }
+  
+  /*********************************
+   *
+   *	Program result is:
+   *
+   * 	Here is a number-   5-and a-    little-word.
+   *
+   *********************************/
+</pre>
+</td>
+</tr>
+</tbody></table>
+</center>
+</a><p><a name="width">
+As you can see, the data is right justified within the field. It can 
+be left justified by using the </a><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#flags">- flag</a>.
+A <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#precision">maximum string</a> width can also be specified. 
+</p><p>
+The width can also be given as a variable as shown below.
+</p><p>
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+    main()
+    {
+        int number=5;
+
+        printf("---%*d----\n", 6, number);
+    }
+  
+    /*********************************
+     *
+     *    Program result is:
+     *
+     *    ----     5---
+     *
+     *********************************/
+</pre>
+</td>
+</tr>
+</tbody></table>
+</center>
+<p>
+The * is replaced with the supplied <b>int</b> to provide the ability to
+dynamically specify the field width.
+</p><p>
+</p><hr>
+<a name="period">
+<h2>Period</h2>
+If you wish to specify the </a><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html#precision">precision</a> of an argument, 
+it MUST be prefixed with the period.
+<p>
+<a name="precision">
+</a></p><hr><a name="precision">
+<h2>Precision</h2>
+
+The Precision takes different meanings for the different format types.
+
+<h3>Float Precision</h3>
+<pre>	%8.2f
+</pre>
+This says you require a total field of 8 characters, within the 8 
+characters the last 2 will hold the decimal part.
+
+<pre>	%.2f
+</pre>
+
+The example above requests the minimum field width and the last two
+characters are to hold the decimal part.
+
+<h3>Character String Maximum field width</h3>
+
+The precision within a string format specifies the maximum
+field width.
+<pre>	%4.8s
+</pre>
+Specifies a minimum width of 4 and a maximum width
+of 8 characters. If the string is greater than 8 characters,
+it will be cropped down to size.
+</a><p><a name="precision">
+<img src="./printfref1_files/computer.gif">
+</a><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/EXAMPLES/sprintf1.c">Here is a little program</a>
+that shows an alternative to <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/strncpy.html">strncpy</a>.
+
+</p><h3>* Precision</h3>
+
+As with the 'width' above, the precision does not have to be hard
+coded, the * symbol can be used and an integer supplied to give its
+value.
+<p>
+</p><hr>
+<a name="id">
+<h2>Format Identifiers</h2>
+The format identifier describes the expected data. The identifier is the 
+character that ends 
+Here is a list of the format identifers as used in 'printf' ,'sprintf'
+,'fprintf' and 'scanf'. 
+
+</a><ol><a name="id">
+<li>Except for '%' and 'n', all the identifiers expect to extract an argument 
+from  the <b>printf</b> parameter list. 
+</li></a><li><a name="id">All of the parmameters should be the value
+to be inserted. EXCEPT %s, this expects a </a><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/CONCEPT/pointers.html">
+pointer</a> to be passed.
+</li></ol>
+<h2>An example.</h2>
+<p>
+</p><center>
+<table border="" bgcolor="ivory" width="80%">
+<tbody><tr>
+<td>
+<pre>
+	main()
+        {
+            int number=5;
+	    char *pointer="little";
+
+	    printf("Here is a number %d and a %s word.\n", number, pointer);
+	}
+	/*********************************
+	 *
+	 *	Program result is:
+	 *
+	 * 	Here is a number 5 and a little word.
+	 *
+	 *********************************/
+</pre>
+</td>
+</tr>
+</tbody></table>
+</center>
+<p>
+
+</p><hr>
+<p>
+</p><center>
+<table border="2" width="80%" bgcolor="ivory">
+<tbody><tr align="center">
+<td width="25%">
+<a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/cref.html">            Top</a>
+</td><td width="25%">
+<a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/master_index.html">    Master Index</a>
+</td><td width="25%">
+<a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/SYNTAX/keywords.html"> Keywords</a>
+</td><td width="25%">
+<a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/funcref.htm">             Functions</a>
+</td>
+</tr>
+</tbody></table>
+</center>
+<p>
+</p><hr>
+<address><a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/address.html">Martin Leslie</a> 
+</address><p>
+
+
+</p></body></html>
