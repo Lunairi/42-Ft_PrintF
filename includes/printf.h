@@ -34,6 +34,8 @@ void	parse_flags(int *i, const char *str, va_list args);
 ** flags_int.c
 */
 void	flags_int(va_list args);
+void	flags_oct(va_list args);
+void	flags_uint(va_list args);
 
 /*
 ** flags_str.c

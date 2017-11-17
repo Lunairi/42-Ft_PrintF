@@ -14,8 +14,17 @@
 
 /*
 ** Flags String Of Characters
-** %s output
+** %s outputs in flags_str
+** %c outputs in flags_char
 */
+
+void	flags_char(va_list args)
+{
+	char *output;
+
+	output = va_arg(args, char*);
+	ft_putstr(output);
+}
 
 void	flags_str(va_list args)
 {

@@ -13,7 +13,7 @@
 # include "printf.h"
 
 /*
-** You have to manage the following conversions: sSpdDioOuUxXcC
+** You have to manage the following conversions: SpDOUXC
 ** • You must manage %%
 ** • You must manage the flags #0-+ and space
 ** • You must manage the minimum field-width
@@ -22,14 +22,19 @@
 */
 
 /*
-** Completed:
+** Completed: s d i o u
+** In Progress: x c
 */
 
 void	parse_flags(int *i, const char *str, va_list args)
 {
 	*i = *i + 1;
-	if(str[*i] == 'd' || str[*i] == 'i')
+	if (str[*i] == 'd' || str[*i] == 'i')
 		flags_int(args);
+	else if (str[*i] == 'u')
+		flags_uint(args);
+	else if (str[*i] == 'o')
+		flags_oct(args);
 	else if (str[*i] == 's')
 		flags_str(args);
 }
