@@ -99,7 +99,8 @@ void				ft_strmcat(char *s1, char *s2,
 						unsigned int *size, unsigned int buf);
 char				*ft_fdtostr(int fd);
 int					ft_strucmp(const char *s1, const char *s2);
-void				ft_putoct(int n);
+void				ft_putoct(unsigned int n);
 void				ft_putunbr(unsigned int n);
+void				ft_puthex(unsigned int n);
 
 #endif

@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C libft/
 	gcc $(CFLAG) $(LFLAG) $(FFLAG) -I libft -I includes $^ -o $(NAME)
-	printf '\033[32m[ ✔ ] %s\n\033[0m' "Created Ft_Printf"
+	printf '\033[32m[ ✔ ] %s\n\033[0m' "Created ft_printf"
 
 ./objects/%.o: ./sources/%.c
 	gcc $(IFLAG) -c $< -o $@
@@ -39,18 +39,18 @@ clean:
 	make fclean -C libft/
 	/bin/rm -f *.o
 	/bin/rm -rf ./objects/*.o
-	printf '\033[31m[ ✔ ] %s\n\033[0m' "Cleaned Ft_Printf"
+	printf '\033[31m[ ✔ ] %s\n\033[0m' "Cleaned ft_printf"
 
 fclean: clean
 	make fclean -C libft/
 	/bin/rm -f $(NAME)
-	printf '\033[31m[ ✔ ] %s\n\033[0m' "Fcleaned Ft_Printf"
+	printf '\033[31m[ ✔ ] %s\n\033[0m' "Fcleaned ft_printf"
 
 test:
 	make fclean
 	make
-	printf '\033[32m[ ✔ ] %s\n\033[0m' "Testing Ft_Printf"
-	./Ft_Printf
+	printf '\033[32m[ ✔ ] %s\n\033[0m' "Testing ft_printf"
+	./ft_printf
 
 re: fclean all
 

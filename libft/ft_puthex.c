@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putoct.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,22 @@
 
 #include "libft.h"
 
-void	ft_putoct(unsigned int n)
+void	ft_puthex(unsigned int n)
 {
-	if (n > 7)
+	if (n > 15)
 	{
-		ft_putoct(n / 8);
-		ft_putoct(n % 8);
+		ft_puthex(n / 16);
+		ft_puthex(n % 16);
 	}
-	else
+	else if (n < 10)
 		ft_putchar(n + '0');
+	else
+	{
+		n == 10 ? ft_putchar('a') : 0;
+		n == 11 ? ft_putchar('b') : 0;
+		n == 12 ? ft_putchar('c') : 0;
+		n == 13 ? ft_putchar('d') : 0;
+		n == 14 ? ft_putchar('e') : 0;
+		n == 15 ? ft_putchar('f') : 0;
+	}
 }

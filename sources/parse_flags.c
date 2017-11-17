@@ -22,8 +22,8 @@
 */
 
 /*
-** Completed: s d i o u
-** In Progress: x c
+** Completed: s d i o u x c
+** In Progress:
 */
 
 void	parse_flags(int *i, const char *str, va_list args)
@@ -34,4 +34,6 @@ void	parse_flags(int *i, const char *str, va_list args)
 	str[*i] == 'u' ? flags_uint(args) : 0;
 	str[*i] == 'o' ? flags_oct(args) : 0;
 	str[*i] == 's' ? flags_str(args) : 0;
+	str[*i] == 'x' ? flags_hex(args) : 0;
+	str[*i] == 'c' ? flags_char(args) : 0;
 }

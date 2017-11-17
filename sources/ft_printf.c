@@ -53,8 +53,8 @@ int		ft_printf(const char *str, ...)
 
 int		main(int ac, char **av)
 {
-	ft_printf("test %d %i %s %o %u", 25, 35, "test4", 12354, -2147483649);
-	printf("\ntest %d %i %s %o %u", 25, 35, "test4", 12354, -2147483649);
+	ft_printf("test %d %i %s %o %u %x %c", 25, 35, "test4", -65, -2147483649, -2990, 'm');
+	printf("\ntest %d %i %s %o %u %x %c", 25, 35, "test4", -65, -2147483649, -2990, 'm');
 	// printf("Test %d", 25);
 	return 0;
 }

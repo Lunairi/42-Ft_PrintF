@@ -22,17 +22,17 @@
 
 void	flags_hex(va_list args)
 {
-	int output;
+	unsigned int output;
 
-	output = va_arg(args, int);
-	ft_putnbr(output);
+	output = va_arg(args, unsigned int);
+	ft_puthex(output);
 }
 
 void	flags_oct(va_list args)
 {
-	int output;
+	unsigned int output;
 
-	output = va_arg(args, int);
+	output = va_arg(args, unsigned int);
 	ft_putoct(output);
 }
 

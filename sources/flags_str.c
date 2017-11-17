@@ -20,10 +20,10 @@
 
 void	flags_char(va_list args)
 {
-	char *output;
+	char output;
 
-	output = va_arg(args, char*);
-	ft_putstr(output);
+	output = (char)va_arg(args, int);
+	ft_putchar(output);
 }
 
 void	flags_str(va_list args)
