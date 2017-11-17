@@ -15,7 +15,7 @@
 NAME	= ft_printf
 
 SRC		= ft_printf.c parse_flags.c \
-			flags_sdi.c \
+			flags_int.c flags_str.c \
 
 OBJ 	= $(addprefix ./objects/, $(SRC:.c=.o))
 CFLAG	= -Wall -Wextra -Werror

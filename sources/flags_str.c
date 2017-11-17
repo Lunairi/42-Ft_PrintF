@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_flags.c                                      :+:      :+:    :+:   */
+/*   flags_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlu <mlu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,23 +13,14 @@
 # include "printf.h"
 
 /*
-** You have to manage the following conversions: sSpdDioOuUxXcC
-** • You must manage %%
-** • You must manage the flags #0-+ and space
-** • You must manage the minimum field-width
-** • You must manage the precision
-** • You must manage the flags hh, h, l, ll, j, et z.
+** Flags String Of Characters
+** %s output
 */
 
-/*
-** Completed:
-*/
-
-void	parse_flags(int *i, const char *str, va_list args)
+void	flags_str(va_list args)
 {
-	*i = *i + 1;
-	if(str[*i] == 'd' || str[*i] == 'i')
-		flags_int(args);
-	else if (str[*i] == 's')
-		flags_str(args);
+	char *output;
+
+	output = va_arg(args, char*);
+	ft_putstr(output);
 }
