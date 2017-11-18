@@ -48,11 +48,11 @@ void	flags_plus(va_list args, int *p, const char *str, int *i)
 
 void	flags_hash(va_list args, int *p, const char *str, int *i)
 {
-	if (str[*i + 1] == 'o')
-	{
-		*p = *p + 1;
-		write(1, "0", 1);
-	}
+	// if (str[*i + 1] == 'o')
+	// {
+	// 	*p = *p + 1;
+	// 	write(1, "0", 1);
+	// }
 	else if (str[*i + 1] == 'x')
 	{
 		*p = *p + 2;
