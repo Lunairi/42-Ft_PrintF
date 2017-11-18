@@ -33,6 +33,11 @@
 void	parse_flags(int *i, const char *str, va_list args, int *p);
 
 /*
+** parse_moreflags.c
+*/
+void	parse_j(va_list args, int *p, const char *str, int *i);
+
+/*
 ** flags_align.c
 */
 void	parse_rightalign(int *i, const char *str, va_list args, int *p);
@@ -88,6 +93,15 @@ void	flags_octll(va_list args, int *p);
 void	flags_uintll(va_list args, int *p);
 void	flags_hexll(va_list args, int *p);
 void	flags_uhexll(va_list args, int *p);
+
+/*
+** flags_intj.c
+*/
+void	flags_intj(va_list args, int *p);
+void	flags_octj(va_list args, int *p);
+void	flags_uintj(va_list args, int *p);
+void	flags_hexj(va_list args, int *p);
+void	flags_uhexj(va_list args, int *p);
 
 /*
 ** flags_adr.c
