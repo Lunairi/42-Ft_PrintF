@@ -55,9 +55,8 @@ int		ft_printf(const char *str, ...)
 // 	short c = 35000;
 // 	unsigned short f = 999;
 // 	// a = 0
-// 	ft_printf("test |%17s| |%-15d| %D", "test", 25, 4294);
-// 	printf("\ntest |%17s| |%-15d| %ld", "test", 25, 4294);
-// 	// write(1, "\n", 1);
+// 	// ft_printf("test |%17s| |%-15d| %D", "test", 25, 4294);
+// // write(1, "\n", 1);
 // 	// ft_printf("%X", ft_printf("%d", 2));
 // 	// write(1, "\n", 1);
 // 	// printf("%X", printf("%d", 2));

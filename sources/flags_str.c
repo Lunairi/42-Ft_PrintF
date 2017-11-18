@@ -33,5 +33,6 @@ void	flags_str(va_list args, int *p)
 	char *output;
 
 	output = va_arg(args, char*);
-	ft_putstrf(output, p);
+	if (output != NULL)
+		ft_putstrf(output, p);
 }
