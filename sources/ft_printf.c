@@ -51,8 +51,8 @@ int		main(int ac, char **av)
 {
 	void *a;
 	a = 0;
-	ft_printf("test %d %i %s %o %u %x %c %X %p |%-17p|", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255, &a, &a);
-	printf("\ntest %d %i %s %o %u %x %c %X %p |%+17d|", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255, &a, 123);
+	ft_printf("test |%17d| %d", 18, 125);
+	printf("\ntest |%9.7d| |%5.3s|", 18, "Test");
 	// write(1, "\n", 1);
 	// ft_printf("%X", ft_printf("%d%c%x", 45, 'S', 8652373));
 	// write(1, "\n", 1);

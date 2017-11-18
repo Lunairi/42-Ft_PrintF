@@ -14,14 +14,13 @@
 
 /*
 ** You have to manage the following conversions: SDOUC (ls ld lo lu lc)
-** • You must manage the minimum field-width
-** • You must manage the flags hh, h, l, ll, j, et z.
+** • You must manage the flags hh, h, l, ll, j, z.
 */
 
 /*
 ** Completed: s d i o u x c X %% p
-** In Progress: precision + 0 #
-** Weird Errors: - space
+** In Progress: precision + 0 # space
+** Weird Errors: - minfieldwidth
 */
 
 /*
@@ -89,7 +88,7 @@ void	flag_ralign(const char *str, va_list args, int align, int *i, int *p)
 
 void	parse_rightalign(int *i, const char *str, va_list args, int *p) // has error need fix, printing some extra stuff somewhere
 {
-	static int count;
+	int count;
 	int align;
 
 	count = *p; 
@@ -105,7 +104,7 @@ void	parse_rightalign(int *i, const char *str, va_list args, int *p) // has erro
 
 void	parse_leftalign(int *i, const char *str, va_list args, int *p) // has error need fix, printing some extra stuff somewhere
 {
-	static int count;
+	int count;
 	int align;
 	int check;
 
@@ -115,8 +114,7 @@ void	parse_leftalign(int *i, const char *str, va_list args, int *p) // has error
 	*i = *i + 1;
 	while (str[*i] >= '0'  && str[*i] <= '9')
 	{
-		if (str[*i] >= '0'  && str[*i] <= '9')
-			align = align * 10 + (str[*i] - '0');
+		align = align * 10 + (str[*i] - '0');
 		*i = *i + 1;
 	}
 	*i = *i - 1;
@@ -135,10 +133,8 @@ void	parse_leftalign(int *i, const char *str, va_list args, int *p) // has error
 void	parse_flags(int *i, const char *str, va_list args, int *p)
 {
 	*i = *i + 1;
-	// while (str[*i] == ' ') // possibly handle?
-	// 	*i = *i + 1;
-	str[*i] >= '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
-	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
+	// str[*i] == '+' ? flags_int(args, p) : 0;
+	// str[*i] == ' ' ? flags_int(args, p) : 0;
 	str[*i] == 'd' ? flags_int(args, p) : 0;
 	str[*i] == 'i' ? flags_int(args, p) : 0;
 	str[*i] == 'u' ? flags_uint(args, p) : 0;
@@ -149,4 +145,6 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
 	str[*i] == '%' ? flags_per(args, p) : 0;
+	str[*i] >= '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
+	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
 }
