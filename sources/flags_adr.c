@@ -26,8 +26,8 @@ void	flags_adr(va_list args, int *p)
 
 	output = va_arg(args, void*);
 	address = (unsigned long)(output);
-	// write(1, "0x7ff", 5);
-	// *p = *p + 5;
+	write(1, "0x", 2);
+	*p = *p + 2;
 	ft_putadr(address, p);
 }
 
