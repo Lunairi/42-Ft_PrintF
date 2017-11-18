@@ -1,4 +1,4 @@
-# 42-PrintF
+# 42-Ft_PrintF
 First algorithm branch project: Recreating printf functionality. In progress currently
 
 Day 1 progress (about 8 hours)
