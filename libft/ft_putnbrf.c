@@ -16,6 +16,7 @@ void	ft_putnbrf(int n, int *p)
 {
 	if (n < 0)
 	{
+		*p = *p + 1;
 		ft_putchar('-');
 		n = -n;
 	}
