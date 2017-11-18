@@ -31,13 +31,11 @@ void	flags_ws(va_list args, int *p, const char *str, int *i)
 			*p = *p + 1;
 			write(1, " ", 1);
 		}
+		*i = *i + 1;
 		ft_putnbrf(output, p);
 	}
 	else
-	{
-		*i = *i + 1;
 		parse_flags(i, str, args, p);
-	}
 }
 
 void	flags_plus(va_list args, int *p, const char *str, int *i)
