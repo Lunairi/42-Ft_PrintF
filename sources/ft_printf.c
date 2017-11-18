@@ -43,20 +43,24 @@ int		ft_printf(const char *str, ...)
 	return (p);
 }
 
-/*
-** Main to test the functionality
-*/
+// /*
+// ** Main to test the functionality
+// */
 
-int		main(int ac, char **av)
-{
-	void *a;
-	// a = 0;
-	ft_printf("test |%17s| |%-15d| %#X", "test", 25, 6666);
-	printf("\ntest |%17s| |%-15d| %#X", "test", 25, 6666);
-	// write(1, "\n", 1);
-	// ft_printf("%X", ft_printf("%d", 2));
-	// write(1, "\n", 1);
-	// printf("%X", printf("%d", 2));
-	// printf("Test %d", 25);
-	return (0);
-}
+// int		main(int ac, char **av)
+// {
+// 	void *a;
+// 	long b = 9;
+// 	char d = 5;
+// 	short c = 35000;
+// 	unsigned short f = 999;
+// 	// a = 0
+// 	ft_printf("test |%17s| |%-15d| %D", "test", 25, 4294);
+// 	printf("\ntest |%17s| |%-15d| %ld", "test", 25, 4294);
+// 	// write(1, "\n", 1);
+// 	// ft_printf("%X", ft_printf("%d", 2));
+// 	// write(1, "\n", 1);
+// 	// printf("%X", printf("%d", 2));
+// 	// printf("Test %d", 25);
+// 	return (0);
+// }

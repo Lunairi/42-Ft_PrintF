@@ -32,6 +32,13 @@
 */
 void	parse_flags(int *i, const char *str, va_list args, int *p);
 
+
+/*
+** flags_align.c
+*/
+void	parse_rightalign(int *i, const char *str, va_list args, int *p);
+void	parse_leftalign(int *i, const char *str, va_list args, int *p);
+
 /*
 ** flags_int.c
 */
@@ -40,6 +47,42 @@ void	flags_oct(va_list args, int *p);
 void	flags_uint(va_list args, int *p);
 void	flags_hex(va_list args, int *p);
 void	flags_uhex(va_list args, int *p);
+
+/*
+** flags_inth.c
+*/
+void	flags_inth(va_list args, int *p);
+void	flags_octh(va_list args, int *p);
+void	flags_uinth(va_list args, int *p);
+void	flags_hexh(va_list args, int *p);
+void	flags_uhexh(va_list args, int *p);
+
+/*
+** flags_inthh.c
+*/
+void	flags_inthh(va_list args, int *p);
+void	flags_octhh(va_list args, int *p);
+void	flags_uinthh(va_list args, int *p);
+void	flags_hexhh(va_list args, int *p);
+void	flags_uhexhh(va_list args, int *p);
+
+/*
+** flags_intl.c
+*/
+void	flags_intl(va_list args, int *p);
+void	flags_octl(va_list args, int *p);
+void	flags_uintl(va_list args, int *p);
+void	flags_hexl(va_list args, int *p);
+void	flags_uhexl(va_list args, int *p);
+
+/*
+** flags_intll.c
+*/
+void	flags_intll(va_list args, int *p);
+void	flags_octll(va_list args, int *p);
+void	flags_uintll(va_list args, int *p);
+void	flags_hexll(va_list args, int *p);
+void	flags_uhexll(va_list args, int *p);
 
 /*
 ** flags_adr.c
