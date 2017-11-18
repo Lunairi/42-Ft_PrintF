@@ -42,4 +42,5 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'X' ? flags_uhex(args, p) : 0;
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
+	str[*i] == '%' ? write(1, "%", 1) : 0;
 }
