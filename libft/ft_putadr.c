@@ -16,8 +16,8 @@ void	ft_putadr(unsigned long n, int *p)
 {
 	if (n > 15)
 	{
-		ft_puthex((n / 16), p);
-		ft_puthex((n % 16), p);
+		ft_putadr((n / 16), p);
+		ft_putadr((n % 16), p);
 	}
 	else if (n < 10)
 	{
