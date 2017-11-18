@@ -53,7 +53,7 @@ void	flags_hash(va_list args, int *p, const char *str, int *i)
 	// 	*p = *p + 1;
 	// 	write(1, "0", 1);
 	// }
-	else if (str[*i + 1] == 'x')
+	if (str[*i + 1] == 'x')
 	{
 		*p = *p + 2;
 		write(1, "0x", 2);
