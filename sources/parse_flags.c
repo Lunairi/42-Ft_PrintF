@@ -83,7 +83,8 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	else
 		output = (char*)va_arg(args, void*);
 	*p = *p + 1;
-	ft_putstrf(output, p);
+	if (output != NULL)
+		ft_putstrf(output, p);
 	// if (output != NULL)
 	// 	ft_putstrf(output, p);
 	// else
