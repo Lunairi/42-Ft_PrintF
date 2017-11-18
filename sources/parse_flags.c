@@ -74,9 +74,17 @@ void	parse_h(va_list args, int *p, const char *str, int *i)
 	str[*i] == 'X' ? flags_uhexh(args, p) : 0;
 }
 
+void	skip(va_list args, int *p)
+{
+	void *output;
+
+	output = (void*)va_arg(args, void*);
+}
+
 void	parse_flags(int *i, const char *str, va_list args, int *p)
 {
 	*i = *i + 1;
+	str[*i] == 'C' || str[*i] == 'S' ? skip(args, p) : 0; 
 	str[*i] == 'd' ? flags_int(args, p) : 0;
 	str[*i] == 'i' ? flags_int(args, p) : 0;
 	str[*i] == 'u' ? flags_uint(args, p) : 0;
