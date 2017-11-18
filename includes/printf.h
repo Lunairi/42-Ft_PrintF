@@ -32,12 +32,17 @@
 */
 void	parse_flags(int *i, const char *str, va_list args, int *p);
 
-
 /*
 ** flags_align.c
 */
 void	parse_rightalign(int *i, const char *str, va_list args, int *p);
 void	parse_leftalign(int *i, const char *str, va_list args, int *p);
+
+/*
+** flags_palign.c
+*/
+void	parse_rightpalign(int *i, const char *str, va_list args, int *p);
+void	parse_leftpalign(int *i, const char *str, va_list args, int *p);
 
 /*
 ** flags_int.c

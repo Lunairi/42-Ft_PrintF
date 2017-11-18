@@ -21,8 +21,8 @@
 
 void	flags_adr(va_list args, int *p)
 {
-	void *output;
-	unsigned long address;
+	void			*output;
+	unsigned long	address;
 
 	output = va_arg(args, void*);
 	address = (unsigned long)(output);

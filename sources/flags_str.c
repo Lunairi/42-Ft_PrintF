@@ -48,9 +48,9 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 
 	if (str[*i] == 'C')
 	{
-		output = (char)va_arg(args, void*);
+		output = va_arg(args, void*);
 		*p = *p + 1;
-		ft_putchar(output);
+		ft_putchar((char)output);
 	}
 	else if (str[*i] == 'S')
 	{

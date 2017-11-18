@@ -87,16 +87,16 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
 	str[*i] == '%' ? flags_per(args, p) : 0;
-	str[*i] == 'C' || str[*i] == 'S' ? flags_wchar(args, p, str, i) : 0; 
+	str[*i] == 'C' || str[*i] == 'S' ? flags_wchar(args, p, str, i) : 0;
 	str[*i] == 'h' && str[*i + 1] == 'h' ? parse_hh(args, p, str, i) : 0;
 	str[*i] == 'h' && str[*i + 1] != 'h' ? parse_h(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] == 'l' ? parse_ll(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] != 'l' ? parse_l(args, p, str, i) : 0;
 	str[*i] == 'D' || str[*i + 1] == 'U' ? parse_l(args, p, str, i) : 0;
 	str[*i] == 'O' ? parse_l(args, p, str, i) : 0;
-	str[*i] == '+' ? flags_plus(args, p, str, i) : 0;
 	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
-	str[*i] >= '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
+	str[*i] > '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
 	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
 	str[*i] == ' ' ? flags_ws(args, p, str, i) : 0;
+	str[*i] == '+' ? flags_plus(args, p, str, i) : 0;
 }

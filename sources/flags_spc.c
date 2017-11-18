@@ -41,52 +41,25 @@ void	flags_ws(va_list args, int *p, const char *str, int *i)
 void	flags_plus(va_list args, int *p, const char *str, int *i)
 {
 	int output;
-	
+
 	if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
 	{
-		*p = *p + 1;
-		write(1, "+", 1);
-	}
-	else if (str[*i + 1] == 'h' && 
-		(str[*i + 2] == 'd' || str[*i + 2] == 'i'))
-	{
+		output = va_arg(args, int);
+		if (output >= 0)
+		{
+			*p = *p + 1;
+			write(1, "+", 1);
+		}
 		*i = *i + 1;
-		*p = *p + 1;
-		write(1, "+", 1);	
+		ft_putnbrf(output, p);
 	}
-	parse_flags(i, str, args, p);
+	else if (str[*i + 1] == '-')
+		parse_leftpalign(i, str, args, p);
+	else if (str[*i + 1] > '0' || str[*i + 1] <= '9')
+		parse_rightpalign(i, str, args, p);
+	else
+		parse_flags(i, str, args, p);
 }
-
-// void	flags_plus(va_list args, int *p, const char *str, int *i)
-// {
-// 	int output;
-
-// 	if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
-// 	{
-// 		output = va_arg(args, int);
-// 		if (output >= 0)
-// 		{
-// 			*p = *p + 1;
-// 			write(1, "+", 1);
-// 		}
-// 		*i = *i + 1;
-// 		ft_putnbrf(output, p);
-// 	}
-// 	else if (str[*i + 1] == 'h' && 
-// 		(str[*i + 2] == 'd' || str[*i + 2] == 'i'))
-// 	{
-// 		output = va_arg(args, int);
-// 		if (output >= 0)
-// 		{
-// 			*p = *p + 1;
-// 			write(1, "+", 1);
-// 		}
-// 		*i = *i + 2;
-// 		ft_putnbrf(output, p);	
-// 	}
-// 	else
-// 		parse_flags(i, str, args, p);
-// }
 
 void	flags_hash(va_list args, int *p, const char *str, int *i)
 {

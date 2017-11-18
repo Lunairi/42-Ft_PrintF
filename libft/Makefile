@@ -92,7 +92,7 @@ SRC = ft_atoi.c \
 	ft_putnbrf.c \
 	ft_numulen.c \
 	ft_putadr.c \
-	ft_putll.c \
+	ft_putull.c \
 	ft_putld.c
 
 OBJ = $(SRC:.c=.o)
