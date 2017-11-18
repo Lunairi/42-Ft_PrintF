@@ -10,13 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "printf.h"
-
-
+#include "printf.h"
 
 /*
 ** • This function will use a ellipsis prototype to grab the initial input
-** when calling printf. Afterwards it'll start reading the string and 
+** when calling printf. Afterwards it'll start reading the string and
 ** begin outputting as necessary, if a flag is reached it'll call
 ** the parse_flags function to help perform necessary edits.
 ** • Int i is used to track the current str that was passed being read.
@@ -27,9 +25,9 @@
 
 int		ft_printf(const char *str, ...)
 {
-	va_list args;
-	int i;
-	int p;
+	va_list	args;
+	int		i;
+	int		p;
 
 	i = -1;
 	p = 0;
@@ -42,7 +40,7 @@ int		ft_printf(const char *str, ...)
 			write(1, &str[i], 1);
 	}
 	va_end(args);
-	return p;
+	return (p);
 }
 
 /*
@@ -51,12 +49,12 @@ int		ft_printf(const char *str, ...)
 
 int		main(int ac, char **av)
 {
-	// ft_printf("test %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
-	// printf("\ntest %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
-	// write(1, "\n", 1);
-	// ft_printf("%X", ft_printf("%d%c%x", 45, 'S', 8652373));
-	// write(1, "\n", 1);
-	// printf("%X", printf("%d%c%x", 45, 'S', 8652373));
-	// printf("Test %d", 25);
-	return 0;
+	ft_printf("test %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
+	printf("\ntest %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
+	write(1, "\n", 1);
+	ft_printf("%X", ft_printf("%d%c%x", 45, 'S', 8652373));
+	write(1, "\n", 1);
+	printf("%X", printf("%d%c%x", 45, 'S', 8652373));
+	printf("Test %d", 25);
+	return (0);
 }
