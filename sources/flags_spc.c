@@ -52,6 +52,7 @@ void	flags_hash(va_list args, int *p, const char *str, int *i)
 
 	if (str[*i + 1] == 'o')
 	{
+		*i = *i + 1;
 		output = va_arg(args, unsigned int);
 		*p = *p + 1;
 		write(1, "0", 1);
