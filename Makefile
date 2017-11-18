@@ -12,12 +12,7 @@
 
 NAME	= libftprintf.a
 
-SRC		= ./sources/ft_printf.c \
-			./sources/parse_flags.c \
-			./sources/flags_int.c \
-			./sources/flags_str.c \
-			./sources/flags_adr.c \
-			./libft/*.c
+SRC		= ./sources/*.c ./libft/*.c
 
 OBJ		= $(SRC:.c=.o)
 CFLAG	= -Wall -Wextra -Werror
