@@ -78,9 +78,12 @@ void	flags_wchar(va_list args, int *p)
 {
 	void *output;
 
-	output = (char)va_arg(args, void*);
+	if (str[*i] == 'C')
+		output = (char)va_arg(args, void*);
+	else
+		output = (char*)va_arg(args, void*);
 	*p = *p + 1;
-	ft_putchar(output);
+	ft_putstrf(output, p);
 	// if (output != NULL)
 	// 	ft_putstrf(output, p);
 	// else
