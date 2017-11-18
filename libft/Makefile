@@ -86,7 +86,10 @@ SRC = ft_atoi.c \
 	ft_strput.c \
 	ft_putoct.c \
 	ft_putunbr.c \
-	ft_puthex.c
+	ft_puthex.c \
+	ft_putuhex.c \
+	ft_putstrf.c \
+	ft_putnbrf.c
 
 OBJ = $(SRC:.c=.o)
 HEADER = includes/

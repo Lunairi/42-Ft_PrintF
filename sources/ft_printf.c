@@ -21,25 +21,28 @@
 ** the parse_flags function to help perform necessary edits.
 ** • Int i is used to track the current str that was passed being read.
 ** By passing its address I can skip outputting the flags and output
-** it elsewhere in my other functions.
+** it elsewhere in my other functions. P is used to track how much bytes
+** are being printed, the addressed is passed to keep track.
 */
 
 int		ft_printf(const char *str, ...)
 {
 	va_list args;
 	int i;
+	int p;
 
 	i = -1;
+	p = 0;
 	va_start(args, str);
 	while (str[++i] != '\0')
 	{
 		if (str[i] == '%')
-			parse_flags(&i, str, args);
+			parse_flags(&i, str, args, &p);
 		else
 			write(1, &str[i], 1);
 	}
 	va_end(args);
-	return 0;
+	return p;
 }
 
 /*
@@ -48,8 +51,12 @@ int		ft_printf(const char *str, ...)
 
 int		main(int ac, char **av)
 {
-	ft_printf("test %d %i %s %o %u %x %c", 25, 35, "test4", -65, -2147483649, -2990, 'm');
-	printf("\ntest %d %i %s %o %u %x %c", 25, 35, "test4", -65, -2147483649, -2990, 'm');
+	// ft_printf("test %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
+	// printf("\ntest %d %i %s %o %u %x %c %X", 25, 35, "test4", -65, -2147483649, -2990, 'm', -255);
+	// write(1, "\n", 1);
+	// ft_printf("%X", ft_printf("%d%c%x", 45, 'S', 8652373));
+	// write(1, "\n", 1);
+	// printf("%X", printf("%d%c%x", 45, 'S', 8652373));
 	// printf("Test %d", 25);
 	return 0;
 }

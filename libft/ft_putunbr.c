@@ -12,13 +12,16 @@
 
 #include "libft.h"
 
-void	ft_putunbr(unsigned int n)
+void	ft_putunbr(unsigned int n, int *p)
 {
 	if (n > 9)
 	{
-		ft_putunbr(n / 10);
-		ft_putunbr(n % 10);
+		ft_putunbr((n / 10), p);
+		ft_putunbr((n % 10), p);
 	}
 	else
+	{
+		*p = *p + 1;
 		ft_putchar(n + '0');
+	}
 }

@@ -18,36 +18,45 @@
 ** %o outputs in flags_oct
 ** %u outputs in flags_uint
 ** %x outputs in flags_hex
+** libft functions: ft_puthex, ft_putoct, ft_putunbr, ft_putnbr
 */
 
-void	flags_hex(va_list args)
+void	flags_uhex(va_list args, int *p)
 {
 	unsigned int output;
 
 	output = va_arg(args, unsigned int);
-	ft_puthex(output);
+	ft_putuhex(output, p);
 }
 
-void	flags_oct(va_list args)
+void	flags_hex(va_list args, int *p)
 {
 	unsigned int output;
 
 	output = va_arg(args, unsigned int);
-	ft_putoct(output);
+	ft_puthex(output, p);
 }
 
-void	flags_uint(va_list args)
+void	flags_oct(va_list args, int *p)
 {
 	unsigned int output;
 
 	output = va_arg(args, unsigned int);
-	ft_putunbr(output);
+	ft_putoct(output, p);
 }
 
-void	flags_int(va_list args)
+void	flags_uint(va_list args, int *p)
+{
+	unsigned int output;
+
+	output = va_arg(args, unsigned int);
+	ft_putunbr(output, p);
+}
+
+void	flags_int(va_list args, int *p)
 {
 	int output;
 
 	output = va_arg(args, int);
-	ft_putnbr(output);
+	ft_putnbrf(output, p);
 }

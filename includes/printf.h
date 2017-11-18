@@ -28,20 +28,21 @@
 /*
 ** parse_flags.c
 */
-void	parse_flags(int *i, const char *str, va_list args);
+void	parse_flags(int *i, const char *str, va_list args, int *p);
 
 /*
 ** flags_int.c
 */
-void	flags_int(va_list args);
-void	flags_oct(va_list args);
-void	flags_uint(va_list args);
-void	flags_hex(va_list args);
+void	flags_int(va_list args, int *p);
+void	flags_oct(va_list args, int *p);
+void	flags_uint(va_list args, int *p);
+void	flags_hex(va_list args, int *p);
+void	flags_uhex(va_list args, int *p);
 
 /*
 ** flags_str.c
 */
-void	flags_str(va_list args);
-void	flags_char(va_list args);
+void	flags_str(va_list args, int *p);
+void	flags_char(va_list args, int *p);
 
 #endif
