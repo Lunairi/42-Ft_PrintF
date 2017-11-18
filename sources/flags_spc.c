@@ -33,7 +33,8 @@ void	flags_ws(va_list args, int *p, const char *str, int *i)
 		}
 		ft_putnbrf(output, p);
 	}
-	// parse_flags(i, str, args, p);
+	else
+		parse_flags(i, str, args, p);
 }
 
 void	flags_plus(va_list args, int *p, const char *str, int *i)
