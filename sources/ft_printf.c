@@ -47,20 +47,20 @@ int		ft_printf(const char *str, ...)
 // ** Main to test the functionality
 // */
 
-int		main(int ac, char **av)
-{
-	void *a;
-	long b = 9;
-	char d = 5;
-	short c = 35000;
-	unsigned short f = 999;
-	// a = 0
-	ft_printf("test |%+i| |%+d| |%+4i| |%+-4i| |%+04d| |%5i|", 42, 42, 42, 42, 42, -42);
-	printf("\ntest |%+i| |%+d| |%+4i| |%+-4i| |%+04d| |%5i|", 42, 42, 42, 42, 42, -42);
-// write(1, "\n", 1);
-	// ft_printf("%X", ft_printf("%d", 2));
-	// write(1, "\n", 1);
-	// printf("%X", printf("%d", 2));
-	// printf("Test %d", 25);
-	return (0);
-}
+// int		main(int ac, char **av)
+// {
+// 	void *a;
+// 	long b = 9;
+// 	char d = 5;
+// 	short c = 35000;
+// 	unsigned short f = 999;
+// 	// a = 0
+// 	ft_printf("test |%+i| |%+d| |%+4i| |%+-4i| |%+04d| |%5i|", 42, 42, 42, 42, 42, -42);
+// 	printf("\ntest |%+i| |%+d| |%+4i| |%+-4i| |%+04d| |%5i|", 42, 42, 42, 42, 42, -42);
+// // write(1, "\n", 1);
+// 	// ft_printf("%X", ft_printf("%d", 2));
+// 	// write(1, "\n", 1);
+// 	// printf("%X", printf("%d", 2));
+// 	// printf("Test %d", 25);
+// 	return (0);
+// }
