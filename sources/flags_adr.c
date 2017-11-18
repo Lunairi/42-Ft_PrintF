@@ -15,16 +15,12 @@
 /*
 ** Flags address
 ** %p outputs in flags_adr
-** libft functions: ft_putchar, ft_putstr
+** %% outputs in flags_per
+** libft functions: ft_puthex
 */
 
 void	flags_adr(va_list args, int *p)
 {
-	// int a;
- //  unsigned int uip = (unsigned int) ((void*) &a);
- //  printf("address of a = 0x%x", uip);
- //  printf("\naddress of a = %p", uip);
-  
 	void *output;
 	unsigned int address;
 
@@ -33,4 +29,10 @@ void	flags_adr(va_list args, int *p)
 	write(1, "0x", 2);
 	*p = *p + 2;
 	ft_puthex(address, p);
+}
+
+void	flags_per(va_list args, int *p)
+{
+	*p = *p + 1;
+	write(1, "%", 1);
 }

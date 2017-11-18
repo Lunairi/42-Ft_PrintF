@@ -45,6 +45,7 @@ void	flags_uhex(va_list args, int *p);
 ** flags_adr.c
 */
 void	flags_adr(va_list args, int *p);
+void	flags_per(va_list args, int *p);
 
 /*
 ** flags_str.c
