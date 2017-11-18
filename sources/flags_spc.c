@@ -48,20 +48,26 @@ void	flags_plus(va_list args, int *p, const char *str, int *i)
 
 void	flags_hash(va_list args, int *p, const char *str, int *i)
 {
-	// if (str[*i + 1] == 'o')
-	// {
-	// 	*p = *p + 1;
-	// 	write(1, "0", 1);
-	// }
-	if (str[*i + 1] == 'x')
+	unsigned int output;
+
+	if (str[*i + 1] == 'o')
+	{
+		output = va_arg(args, unsigned int);
+		*p = *p + 1;
+		write(1, "0", 1);
+		if (output != 0)
+			ft_putoct(output, p);
+	}
+	else if (str[*i + 1] == 'x')
 	{
 		*p = *p + 2;
 		write(1, "0x", 2);
+		parse_flags(i, str, args, p);
 	}
 	else if (str[*i + 1] == 'X')
 	{
 		*p = *p + 2;
 		write(1, "0X", 2);
+		parse_flags(i, str, args, p);
 	}
-	parse_flags(i, str, args, p);
 }
