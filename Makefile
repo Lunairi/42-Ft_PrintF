@@ -12,8 +12,11 @@
 
 NAME	= libftprintf.a
 
-SRC		= ft_printf.c parse_flags.c \
-			flags_int.c flags_str.c flags_adr.c \
+SRC		= ./sources/ft_printf.c \
+			./sources/parse_flags.c \
+			./sources/flags_int.c \
+			./sources/flags_str.c \
+			./sources/flags_adr.c \
 			./libft/*.c
 
 OBJ		= $(SRC:.c=.o)
@@ -23,8 +26,7 @@ HEADER	= includes/
 all: $(NAME)
 
 $(NAME):
-	make -C libft/
-	gcc $(CFLAG) -c -I$(HEADER) $(SRC)
+	gcc $(CFLAG) -c -I$(HEADER) -I ./libft $(SRC)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 
