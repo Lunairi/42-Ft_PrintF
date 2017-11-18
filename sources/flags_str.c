@@ -35,4 +35,9 @@ void	flags_str(va_list args, int *p)
 	output = va_arg(args, char*);
 	if (output != NULL)
 		ft_putstrf(output, p);
+	else
+	{
+		*p = *p + 6;
+		write(1, "(null)", 6);
+	}
 }
