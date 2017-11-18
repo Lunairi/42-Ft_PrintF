@@ -41,3 +41,21 @@ void	flags_str(va_list args, int *p)
 		write(1, "(null)", 6);
 	}
 }
+
+void	flags_wchar(va_list args, int *p, const char *str, int *i)
+{
+	void *output;
+
+	if (str[*i] == 'C')
+	{
+		output = (char)va_arg(args, void*);
+		*p = *p + 1;
+		ft_putchar(output);
+	}
+	else if (str[*i] == 'S')
+	{
+		output = va_arg(args, void*);
+		if (output != NULL)
+			ft_putstrf((char*)output, p);
+	}
+}

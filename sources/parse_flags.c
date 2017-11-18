@@ -74,34 +74,6 @@ void	parse_h(va_list args, int *p, const char *str, int *i)
 	str[*i] == 'X' ? flags_uhexh(args, p) : 0;
 }
 
-void	flags_wchar(va_list args, int *p, const char *str, int *i)
-{
-	void *output;
-
-	if (str[*i] == 'C')
-	{
-		output = (char)va_arg(args, void*);
-		*p = *p + 1;
-		ft_putchar(output);
-	}
-	else if (str[*i] == 'S')
-	{
-		output = va_arg(args, void*);
-		if (output != NULL)
-			ft_putstrf((char*)output, p);
-	}
-	// if (output != NULL)
-	// 	ft_putstrf(output, p);
-	// else
-	// {
-	// 	*p = *p + 6;
-	// 	write(1, "(null)", 6);
-	// }
-	// void *output;
-
-	// output = (void*)va_arg(args, void*);
-}
-
 void	parse_flags(int *i, const char *str, va_list args, int *p)
 {
 	*i = *i + 1;

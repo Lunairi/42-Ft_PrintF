@@ -95,6 +95,7 @@ void	flags_per(va_list args, int *p);
 */
 void	flags_str(va_list args, int *p);
 void	flags_char(va_list args, int *p);
+void	flags_wchar(va_list args, int *p, const char *str, int *i);
 
 /*
 ** flags_spc.
