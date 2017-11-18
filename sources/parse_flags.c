@@ -74,7 +74,7 @@ void	parse_h(va_list args, int *p, const char *str, int *i)
 	str[*i] == 'X' ? flags_uhexh(args, p) : 0;
 }
 
-void	flags_wchar(va_list args, int *p)
+void	flags_wchar(va_list args, int *p, const char *str, int *i)
 {
 	void *output;
 
@@ -109,7 +109,7 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
 	str[*i] == '%' ? flags_per(args, p) : 0;
-	str[*i] == 'C' || str[*i] == 'S' ? flags_wchar(args, p) : 0; 
+	str[*i] == 'C' || str[*i] == 'S' ? flags_wchar(args, p, str, i) : 0; 
 	str[*i] == 'h' && str[*i + 1] == 'h' ? parse_hh(args, p, str, i) : 0;
 	str[*i] == 'h' && str[*i + 1] != 'h' ? parse_h(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] == 'l' ? parse_ll(args, p, str, i) : 0;
