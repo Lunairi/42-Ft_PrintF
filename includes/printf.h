@@ -22,6 +22,8 @@
 # include <sys/stat.h>
 # include <math.h>
 # include <stdarg.h>
+# include <stdint.h>
+# include <inttypes.h>
 
 # include "libft.h"
 
@@ -38,6 +40,11 @@ void	flags_oct(va_list args, int *p);
 void	flags_uint(va_list args, int *p);
 void	flags_hex(va_list args, int *p);
 void	flags_uhex(va_list args, int *p);
+
+/*
+** flags_adr.c
+*/
+void	flags_adr(va_list args, int *p);
 
 /*
 ** flags_str.c

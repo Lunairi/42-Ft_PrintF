@@ -1,57 +1,37 @@
-#* ************************************************************************** */
-#*                                                                            */
-#*    Makefile               _             _              :::      ::::::::   */
-#*    By: mlu               | |           | |           :+:      :+:    :+:   */
-#*     ___  __ _  __ _ _ __ | | __ _ _ __ | |_        +:+ +:+         +:+     */
-#*    / _ \/ _` |/ _` | '_ \| |/ _` | '_ \| __|     +#+  +:+       +#+        */
-#*   |  __/ (_| | (_| | |_) | | (_| | | | | |_    +#+#+#+#+#+   +#+           */
-#*    \___|\__, |\__, | .__/|_|\__,_|_| |_|\__|        #+#    #+#             */
-#*          __/ | __/ | |                             ###   ########.fr       */
-#*         |___/ |___/|_|                                                     */
-#* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mlu <marvin@student.42.fr>                 +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/04/11 13:48:43 by mlu               #+#    #+#              #
+#    Updated: 2017/06/13 12:45:09 by mlu              ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-#* I'm bad at makefiles, but I'm good at grilling eggplants
-
-NAME	= ft_printf
+NAME	= libftprintf.a
 
 SRC		= ft_printf.c parse_flags.c \
-			flags_int.c flags_str.c \
+			flags_int.c flags_str.c flags_adr.c \
 
-OBJ 	= $(addprefix ./objects/, $(SRC:.c=.o))
+OBJ		= $(SRC:.c=.o)
 CFLAG	= -Wall -Wextra -Werror
 LFLAG	= ./libft/libft.a
-FFLAG	= -framework OpenGL -framework AppKit
-IFLAG	= -I libft -I includes
-
-.SILENT:
+HEADER	= includes/
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):
 	make -C libft/
-	gcc $(CFLAG) $(LFLAG) $(FFLAG) -I libft -I includes $^ -o $(NAME)
-	printf '\033[32m[ ✔ ] %s\n\033[0m' "Created ft_printf"
-
-./objects/%.o: ./sources/%.c
-	gcc $(IFLAG) -c $< -o $@
+	gcc $(CFLAG) $(LFLAG) -c -I$(HEADER) -I libft $(SRC)
+	ar rc $(NAME) *.o
+	ranlib $(NAME)
 
 clean:
-	make fclean -C libft/
-	/bin/rm -f *.o
-	/bin/rm -rf ./objects/*.o
-	printf '\033[31m[ ✔ ] %s\n\033[0m' "Cleaned ft_printf"
+	rm -f *.o
 
 fclean: clean
-	make fclean -C libft/
-	/bin/rm -f $(NAME)
-	printf '\033[31m[ ✔ ] %s\n\033[0m' "Fcleaned ft_printf"
-
-test:
-	make fclean
-	make
-	printf '\033[32m[ ✔ ] %s\n\033[0m' "Testing ft_printf"
-	./ft_printf
+	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: clean fclean re all test

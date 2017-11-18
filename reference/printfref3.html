@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://linux.die.net/man/3/printf -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>printf(3): formatted output conversion - Linux man page</title>
+<!--<base href="https://linux.die.net/man/3/printf">--><base href=".">
+<link rel="canonical" href="https://linux.die.net/man/3/printf">
+<link rel="stylesheet" type="text/css" href="./printref3_files/white.css">
+<link rel="shortcut icon" href="https://linux.die.net/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The functions in the printf() family produce output according to a format as described below. The functions printf() and vprintf() write output to stdout, ...">
+<script src="./printref3_files/ca-pub-5823754184406795.js"></script><script type="text/javascript" async="" src="./printref3_files/ga.js"></script><script type="text/javascript">
+<!--
+var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-50820-6']);_gaq.push(['_trackPageview']);
+window.google_analytics_uacct = 'UA-50820-6';
+// -->
+</script>
+<link rel="preload" href="./printref3_files/integrator.js" as="script"><script type="text/javascript" src="./printref3_files/integrator.js"></script></head>
+
+<body>
+<div id="bg">
+<div id="logo">
+<a href="https://www.die.net/"><img src="./printref3_files/logo.svg" alt="die.net" width="120" height="120" onerror="this.onerror=null; this.src=&#39;/style/logo.png&#39;"></a>
+</div>
+<div id="content">
+
+<!-- google_ad_section_start -->
+<h1>printf(3) - Linux man page</h1>
+
+<h2>Name</h2>
+
+<p>printf, fprintf, sprintf, snprintf, vprintf, vfprintf, vsprintf, vsnprintf - formatted output conversion
+</p><h2>Synopsis</h2>
+<div id="adright">
+<script async="" src="./printref3_files/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5823754184406795" data-ad-slot="7130739364" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:336px;height:280px;" src="./printref3_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+<p><b>#include &lt;<a href="https://linux.die.net/include/stdio.h" rel="nofollow">stdio.h</a>&gt;</b>
+</p><p><b>int printf(const char *</b><i>format</i><b>, ...);<br>
+int fprintf(FILE *</b><i>stream</i><b>, const char *</b><i>format</i><b>, ...);<br>
+int sprintf(char *</b><i>str</i><b>, const char *</b><i>format</i><b>, ...);<br>
+int snprintf(char *</b><i>str</i><b>, size_t</b> <i>size</i><b>, const char *</b><i>format</i><b>, ...);</b>
+</p><p><b>#include &lt;stdarg.h&gt;</b>
+</p><p><b>int vprintf(const char *</b><i>format</i><b>, va_list</b> <i>ap</i><b>);<br>
+int vfprintf(FILE *</b><i>stream</i><b>, const char *</b><i>format</i><b>, va_list</b> <i>ap</i><b>);<br>
+int vsprintf(char *</b><i>str</i><b>, const char *</b><i>format</i><b>, va_list</b> <i>ap</i><b>);<br>
+int vsnprintf(char *</b><i>str</i><b>, size_t</b> <i>size</i><b>, const char *</b><i>format</i><b>, va_list</b> <i>ap</i><b>);</b>
+
+</p><p>Feature Test Macro Requirements for glibc (see <b><a href="https://linux.die.net/man/7/feature_test_macros">feature_test_macros</a></b>(7)):
+</p><dl compact="">
+<dt><b>snprintf</b>(), <b>vsnprintf</b>():
+</dt><dd>_BSD_SOURCE || _XOPEN_SOURCE &gt;= 500 || _ISOC99_SOURCE || _POSIX_C_SOURCE &gt;= 200112L;<br>
+or <i>cc -std=c99</i>
+</dd></dl>
+<h2>Description</h2>
+
+<p>The functions in the <b>printf</b>() family produce output according to a <i>format</i> as described below. The functions <b>printf</b>() and
+<b>vprintf</b>() write output to <i>stdout</i>, the standard output stream; <b>fprintf</b>() and <b>vfprintf</b>() write output to the given output
+<i>stream</i>; <b>sprintf</b>(), <b>snprintf</b>(), <b>vsprintf</b>() and <b>vsnprintf</b>() write to the character string <i>str</i>.
+</p><p>The functions <b>snprintf</b>() and <b>vsnprintf</b>() write at most <i>size</i> bytes (including the terminating null byte ('\0')) to <i>str</i>.
+
+</p><p>The functions <b>vprintf</b>(), <b>vfprintf</b>(), <b>vsprintf</b>(), <b>vsnprintf</b>() are equivalent to the functions <b>printf</b>(), <b>fprintf</b>(),
+<b>sprintf</b>(), <b>snprintf</b>(), respectively, except that they are called with a <i>va_list</i> instead of a variable number of arguments. These functions
+do not call the <i>va_end</i> macro. Because they invoke the <i>va_arg</i> macro, the value of <i>ap</i> is undefined after the call. See <b><a href="https://linux.die.net/man/3/stdarg">stdarg</a></b>(3).
+
+</p><p>These eight functions write the output under the control of a <i>format</i> string that specifies how subsequent arguments (or arguments accessed via the
+variable-length argument facilities of <b><a href="https://linux.die.net/man/3/stdarg" rel="nofollow">stdarg</a></b>(3)) are converted for output.
+</p><p>C99 and POSIX.1-2001 specify that the results are undefined if a call to <b>sprintf</b>(), <b>snprintf</b>(), <b>vsprintf</b>(), or <b>vsnprintf</b>() would
+cause copying to take place between objects that overlap (e.g., if the target string array and one of the supplied input arguments refer to the same buffer).
+See NOTES.
+
+</p><p><b>Return value</b>
+</p><dl compact="">
+<dt>Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+<p>The functions <b>snprintf</b>() and <b>vsnprintf</b>() do not write more than <i>size</i> bytes (including the terminating null byte ('\0')). If the output
+was truncated due to this limit then the return value is the number of characters (excluding the terminating null byte) which would have been written to the
+final string if enough space had been available. Thus, a return value of <i>size</i> or more means that the output was truncated. (See also below under NOTES.)
+
+</p><p>If an output error is encountered, a negative value is returned.
+</p></dt></dl>
+
+<p><b>Format of the format string</b>
+</p><dl compact="">
+<dt>The format string is a character string, beginning and ending in its initial shift state, if any. The format string is composed of zero or more directives:
+ordinary characters (not <b>%</b>), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or
+more subsequent arguments. Each conversion specification is introduced by the character <b>%</b>, and ends with a <i>conversion specifier</i>. In between there
+may be (in this order) zero or more <i>flags</i>, an optional minimum <i>field width</i>, an optional <i>precision</i> and an optional <i>length modifier</i>.
+
+<p>The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are used in the order given, where
+each '*' and each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given). One can also specify
+explicitly which argument is taken, at each place where an argument is required, by writing "%m$" instead of '%' and "*m$" instead of '*', where the decimal
+integer m denotes the position in the argument list of the desired argument, indexed starting from 1. Thus,
+</p></dt><dd>
+
+<pre class="code">printf("%*d", width, num);</pre>
+</dd><dt>and
+</dt><dd>
+
+<pre class="code">printf("%2$*1$d", width, num);</pre>
+</dd><dt>are equivalent. The second style allows repeated references to the same argument. The C99 standard does not include the style using '$', which comes from
+the Single UNIX Specification. If the style using '$' is used, it must be used throughout for all conversions taking an argument and all width and precision
+arguments, but it may be mixed with "%%" formats which do not consume an argument. There may be no gaps in the numbers of arguments specified using '$'; for
+example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.
+<p>For some numeric conversions a radix character ("decimal point") or thousands' grouping character is used. The actual character used depends on the
+<b>LC_NUMERIC</b> part of the locale. The POSIX locale uses '.' as radix character, and does not have a grouping character. Thus,
+</p></dt><dd>
+
+<pre class="code">printf("%'.2f", 1234567.89);</pre>
+</dd><dt>results in "1234567.89" in the POSIX locale, in "1234567,89" in the nl_NL locale, and in "1.234.567,89" in the da_DK locale.
+</dt></dl>
+
+<p><b>The flag characters</b>
+</p><dl compact="">
+<dt>The character % is followed by zero or more of the following flags:
+</dt><dt><b>#</b>
+
+<p>The value should be converted to an "alternate form". For <b>o</b> conversions, the first character of the output string is made zero (by prefixing a 0 if
+it was not zero already). For <b>x</b> and <b>X</b> conversions, a nonzero result has the string "0x" (or "0X" for <b>X</b> conversions) prepended to it. For
+<b>a</b>, <b>A</b>, <b>e</b>, <b>E</b>, <b>f</b>, <b>F</b>, <b>g</b>, and <b>G</b> conversions, the result will always contain a decimal point, even if no
+digits follow it (normally, a decimal point appears in the results of those conversions only if a digit follows). For <b>g</b> and <b>G</b> conversions,
+trailing zeros are not removed from the result as they would otherwise be. For other conversions, the result is undefined.
+
+</p><p><b>0</b>
+
+</p><p>The value should be zero padded. For <b>d</b>, <b>i</b>, <b>o</b>, <b>u</b>, <b>x</b>, <b>X</b>, <b>a</b>, <b>A</b>, <b>e</b>, <b>E</b>, <b>f</b>, <b>F</b>,
+<b>g</b>, and <b>G</b> conversions, the converted value is padded on the left with zeros rather than blanks. If the <b>0</b> and <b>-</b> flags both appear,
+the <b>0</b> flag is ignored. If a precision is given with a numeric conversion (<b>d</b>, <b>i</b>, <b>o</b>, <b>u</b>, <b>x</b>, and <b>X</b>), the <b>0</b>
+flag is ignored. For other conversions, the behavior is undefined.
+
+</p><p><b>-</b>
+
+</p><p>The converted value is to be left adjusted on the field boundary. (The default is right justification.) Except for <b>n</b> conversions, the converted value
+is padded on the right with blanks, rather than on the left with blanks or zeros. A <b>-</b> overrides a <b>0</b> if both are given.
+
+</p><p><b>' '</b>
+
+</p><p>(a space) A blank should be left before a positive number (or empty string) produced by a signed conversion.
+
+</p><p><b>+</b>
+
+</p><p>A sign (+ or -) should always be placed before a number produced by a signed conversion. By default a sign is used only for negative numbers. A <b>+</b>
+overrides a space if both are used.
+</p></dt><dt>The five flag characters above are defined in the C standard. The SUSv2 specifies one further flag character.
+</dt><dt><b>'</b>
+
+<p>For decimal conversion (<b>i</b>, <b>d</b>, <b>u</b>, <b>f</b>, <b>F</b>, <b>g</b>, <b>G</b>) the output is to be grouped with thousands' grouping
+characters if the locale information indicates any. Note that many versions of <b><a href="https://linux.die.net/man/1/gcc">gcc</a></b>(1) cannot parse this option and will issue a warning. SUSv2 does not
+include <i>%'F</i>.
+</p></dt><dt>glibc 2.2 adds one further flag character.
+</dt><dt><b>I</b>
+
+<p>For decimal integer conversion (<b>i</b>, <b>d</b>, <b>u</b>) the output uses the locale's alternative output digits, if any. For example, since glibc 2.2.3
+this will give Arabic-Indic digits in the Persian ("fa_IR") locale.
+</p></dt></dl>
+
+<p><b>The field width</b>
+</p><dl compact="">
+<dt>An optional decimal digit string (with nonzero first digit) specifying a minimum field width. If the converted value has fewer characters than the field
+width, it will be padded with spaces on the left (or right, if the left-adjustment flag has been given). Instead of a decimal digit string one may write "*" or
+"*m$" (for some decimal integer <i>m</i>) to specify that the field width is given in the next argument, or in the <i>m</i>-th argument, respectively, which
+must be of type <i>int</i>. A negative field width is taken as a '-' flag followed by a positive field width. In no case does a nonexistent or small field
+width cause truncation of a field; if the result of a conversion is wider than the field width, the field is expanded to contain the conversion result.
+</dt></dl>
+
+<p><b>The precision</b>
+</p><dl compact="">
+<dt>An optional precision, in the form of a period ('.') followed by an optional decimal digit string. Instead of a decimal digit string one may write "*" or
+"*m$" (for some decimal integer m) to specify that the precision is given in the next argument, or in the m-th argument, respectively, which must be of type
+<i>int</i>. If the precision is given as just '.', or the precision is negative, the precision is taken to be zero. This gives the minimum number of digits to
+appear for <b>d</b>, <b>i</b>, <b>o</b>, <b>u</b>, <b>x</b>, and <b>X</b> conversions, the number of digits to appear after the radix character for <b>a</b>,
+<b>A</b>, <b>e</b>, <b>E</b>, <b>f</b>, and <b>F</b> conversions, the maximum number of significant digits for <b>g</b> and <b>G</b> conversions, or the
+maximum number of characters to be printed from a string for <b>s</b> and <b>S</b> conversions.
+</dt></dl>
+
+<p><b>The length modifier</b>
+</p><dl compact="">
+<dt>Here, "integer conversion" stands for <b>d</b>, <b>i</b>, <b>o</b>, <b>u</b>, <b>x</b>, or <b>X</b> conversion.
+</dt><dt><b>hh</b>
+
+<p>A following integer conversion corresponds to a <i>signed char</i> or <i>unsigned char</i> argument, or a following <b>n</b> conversion corresponds to a
+pointer to a <i>signed char</i> argument.
+
+</p><p><b>h</b>
+
+</p><p>A following integer conversion corresponds to a <i>short int</i> or <i>unsigned short int</i> argument, or a following <b>n</b> conversion corresponds to a
+pointer to a <i>short int</i> argument.
+
+</p><p><b>l</b>
+
+</p><p>(ell) A following integer conversion corresponds to a <i>long int</i> or <i>unsigned long int</i> argument, or a following <b>n</b> conversion corresponds
+to a pointer to a <i>long int</i> argument, or a following <b>c</b> conversion corresponds to a <i>wint_t</i> argument, or a following <b>s</b> conversion
+corresponds to a pointer to <i>wchar_t</i> argument.
+
+</p><p><b>ll</b>
+
+</p><p>(ell-ell). A following integer conversion corresponds to a <i>long long int</i> or <i>unsigned long long int</i> argument, or a following <b>n</b>
+conversion corresponds to a pointer to a <i>long long int</i> argument.
+
+</p><p><b>L</b>
+
+</p><p>A following <b>a</b>, <b>A</b>, <b>e</b>, <b>E</b>, <b>f</b>, <b>F</b>, <b>g</b>, or <b>G</b> conversion corresponds to a <i>long double</i> argument. (C99
+allows %LF, but SUSv2 does not.)
+
+</p><p><b>q</b>
+
+</p><p>("quad". 4.4BSD and Linux libc5 only. Don't use.) This is a synonym for <b>ll</b>.
+
+</p><p><b>j</b>
+
+</p><p>A following integer conversion corresponds to an <i>intmax_t</i> or <i>uintmax_t</i> argument.
+
+</p><p><b>z</b>
+
+</p><p>A following integer conversion corresponds to a <i>size_t</i> or <i>ssize_t</i> argument. (Linux libc5 has <b>Z</b> with this meaning. Don't use it.)
+
+</p><p><b>t</b>
+
+</p><p>A following integer conversion corresponds to a <i>ptrdiff_t</i> argument.
+</p></dt><dt>The SUSv2 only knows about the length modifiers <b>h</b> (in <b>hd</b>, <b>hi</b>, <b>ho</b>, <b>hx</b>, <b>hX</b>, <b>hn</b>) and <b>l</b> (in <b>ld</b>,
+<b>li</b>, <b>lo</b>, <b>lx</b>, <b>lX</b>, <b>ln</b>, <b>lc</b>, <b>ls</b>) and <b>L</b> (in <b>Le</b>, <b>LE</b>, <b>Lf</b>, <b>Lg</b>, <b>LG</b>).
+</dt></dl>
+
+<p><b>The conversion specifier</b>
+</p><dl compact="">
+<dt>A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
+</dt><dt><b>d</b>, <b>i</b>
+
+<p>The <i>int</i> argument is converted to signed decimal notation. The precision, if any, gives the minimum number of digits that must appear; if the
+converted value requires fewer digits, it is padded on the left with zeros. The default precision is 1. When 0 is printed with an explicit precision 0, the
+output is empty.
+</p></dt><dt><b>o</b>, <b>u</b>, <b>x</b>, <b>X</b>
+</dt><dd>The <i>unsigned int</i> argument is converted to unsigned octal (<b>o</b>), unsigned decimal (<b>u</b>), or unsigned hexadecimal (<b>x</b> and <b>X</b>)
+notation. The letters <b>abcdef</b> are used for <b>x</b> conversions; the letters <b>ABCDEF</b> are used for <b>X</b> conversions. The precision, if any,
+gives the minimum number of digits that must appear; if the converted value requires fewer digits, it is padded on the left with zeros. The default precision
+is 1. When 0 is printed with an explicit precision 0, the output is empty.
+</dd><dt><b>e</b>, <b>E</b>
+
+<p>The <i>double</i> argument is rounded and converted in the style [-]d<b>.</b>ddd<b>e</b>±dd where there is one digit before the decimal-point character and
+the number of digits after it is equal to the precision; if the precision is missing, it is taken as 6; if the precision is zero, no decimal-point character
+appears. An <b>E</b> conversion uses the letter <b>E</b> (rather than <b>e</b>) to introduce the exponent. The exponent always contains at least two digits; if
+the value is zero, the exponent is 00.
+
+</p><p><b>f</b>, <b>F</b>
+
+</p><p>The <i>double</i> argument is rounded and converted to decimal notation in the style [-]ddd<b>.</b>ddd, where the number of digits after the decimal-point
+character is equal to the precision specification. If the precision is missing, it is taken as 6; if the precision is explicitly zero, no decimal-point
+character appears. If a decimal point appears, at least one digit appears before it.
+</p></dt><dt>(The SUSv2 does not know about <b>F</b> and says that character string representations for infinity and NaN may be made available. The C99 standard
+specifies "[-]inf" or "[-]infinity" for infinity, and a string starting with "nan" for NaN, in the case of <b>f</b> conversion, and "[-]INF" or "[-]INFINITY"
+or "NAN*" in the case of <b>F</b> conversion.)
+</dt><dt><b>g</b>, <b>G</b>
+
+<p>The <i>double</i> argument is converted in style <b>f</b> or <b>e</b> (or <b>F</b> or <b>E</b> for <b>G</b> conversions). The precision specifies the number
+of significant digits. If the precision is missing, 6 digits are given; if the precision is zero, it is treated as 1. Style <b>e</b> is used if the exponent
+from its conversion is less than -4 or greater than or equal to the precision. Trailing zeros are removed from the fractional part of the result; a decimal
+point appears only if it is followed by at least one digit.
+
+</p><p><b>a</b>, <b>A</b>
+
+</p><p>(C99; not in SUSv2) For <b>a</b> conversion, the <i>double</i> argument is converted to hexadecimal notation (using the letters abcdef) in the style
+[-]<b>0x</b>h<b>.</b>hhhh<b>p</b>±; for <b>A</b> conversion the prefix <b>0X</b>, the letters ABCDEF, and the exponent separator <b>P</b> is used. There is one
+hexadecimal digit before the decimal point, and the number of digits after it is equal to the precision. The default precision suffices for an exact
+representation of the value if an exact representation in base 2 exists and otherwise is sufficiently large to distinguish values of type <i>double</i>. The
+digit before the decimal point is unspecified for nonnormalized numbers, and nonzero but otherwise unspecified for normalized numbers.
+
+</p><p><b>c</b>
+
+</p><p>If no <b>l</b> modifier is present, the <i>int</i> argument is converted to an <i>unsigned char</i>, and the resulting character is written. If an <b>l</b>
+modifier is present, the <i>wint_t</i> (wide character) argument is converted to a multibyte sequence by a call to the <b><a href="https://linux.die.net/man/3/wcrtomb">wcrtomb</a></b>(3) function, with a
+conversion state starting in the initial state, and the resulting multibyte string is written.
+
+</p><p><b>s</b>
+
+</p><p>If no <b>l</b> modifier is present: The <i>const char *</i> argument is expected to be a pointer to an array of character type (pointer to a string).
+Characters from the array are written up to (but not including) a terminating null byte ('\0'); if a precision is specified, no more than the number specified
+are written. If a precision is given, no null byte need be present; if the precision is not specified, or is greater than the size of the array, the array must
+contain a terminating null byte.
+</p></dt><dt>If an <b>l</b> modifier is present: The <i>const wchar_t *</i> argument is expected to be a pointer to an array of wide characters. Wide characters from the
+array are converted to multibyte characters (each by a call to the <b><a href="https://linux.die.net/man/3/wcrtomb" rel="nofollow">wcrtomb</a></b>(3) function, with a conversion state starting in the initial state before the
+first wide character), up to and including a terminating null wide character. The resulting multibyte characters are written up to (but not including) the
+terminating null byte. If a precision is specified, no more bytes than the number specified are written, but no partial multibyte characters are written. Note
+that the precision determines the number of <i>bytes</i> written, not the number of <i>wide characters</i> or <i>screen positions</i>. The array must contain a
+terminating null wide character, unless a precision is given and it is so small that the number of bytes written exceeds it before the end of the array is
+reached.
+</dt><dt><b>C</b>
+
+<p>(Not in C99, but in SUSv2.) Synonym for <b>lc</b>. Don't use.
+
+</p><p><b>S</b>
+
+</p><p>(Not in C99, but in SUSv2.) Synonym for <b>ls</b>. Don't use.
+
+</p><p><b>p</b>
+
+</p><p>The <i>void *</i> pointer argument is printed in hexadecimal (as if by <b>%#x</b> or <b>%#lx</b>).
+
+</p><p><b>n</b>
+
+</p><p>The number of characters written so far is stored into the integer indicated by the <i>int *</i> (or variant) pointer argument. No argument is converted.
+
+</p><p><b>m</b>
+
+</p><p>(Glibc extension.) Print output of <i>strerror(errno)</i>. No argument is required.
+
+</p><p><b>%</b>
+
+</p><p>A '%' is written. No argument is converted. The complete conversion specification is '%%'.
+</p></dt></dl>
+<h2>Conforming To</h2>
+
+<p>The <b>fprintf</b>(), <b>printf</b>(), <b>sprintf</b>(), <b>vprintf</b>(), <b>vfprintf</b>(), and <b>vsprintf</b>() functions conform to C89 and C99. The
+<b>snprintf</b>() and <b>vsnprintf</b>() functions conform to C99.
+</p><p>Concerning the return value of <b>snprintf</b>(), SUSv2 and C99 contradict each other: when <b>snprintf</b>() is called with <i>size</i>=0 then SUSv2
+stipulates an unspecified return value less than 1, while C99 allows <i>str</i> to be NULL in this case, and gives the return value (as always) as the number
+of characters that would have been written in case the output string has been large enough.
+</p><p>Linux libc4 knows about the five C standard flags. It knows about the length modifiers <b>h</b>, <b>l</b>, <b>L</b>, and the conversions <b>c</b>, <b>d</b>,
+<b>e</b>, <b>E</b>, <b>f</b>, <b>F</b>, <b>g</b>, <b>G</b>, <b>i</b>, <b>n</b>, <b>o</b>, <b>p</b>, <b>s</b>, <b>u</b>, <b>x</b>, and <b>X</b>, where <b>F</b>
+is a synonym for <b>f</b>. Additionally, it accepts <b>D</b>, <b>O</b>, and <b>U</b> as synonyms for <b>ld</b>, <b>lo</b>, and <b>lu</b>. (This is bad, and
+caused serious bugs later, when support for <b>%D</b> disappeared.) No locale-dependent radix character, no thousands' separator, no NaN or infinity, no "%m$"
+and "*m$".
+</p><p>Linux libc5 knows about the five C standard flags and the ' flag, locale, "%m$" and "*m$". It knows about the length modifiers <b>h</b>, <b>l</b>, <b>L</b>,
+<b>Z</b>, and <b>q</b>, but accepts <b>L</b> and <b>q</b> both for <i>long double</i> and for <i>long long int</i> (this is a bug). It no longer recognizes
+<b>F</b>, <b>D</b>, <b>O</b>, and <b>U</b>, but adds the conversion character <b>m</b>, which outputs <i>strerror(errno)</i>.
+</p><p>glibc 2.0 adds conversion characters <b>C</b> and <b>S</b>.
+</p><p>glibc 2.1 adds length modifiers <b>hh</b>, <b>j</b>, <b>t</b>, and <b>z</b> and conversion characters <b>a</b> and <b>A</b>.
+</p><p>glibc 2.2 adds the conversion character <b>F</b> with C99 semantics, and the flag character <b>I</b>.
+</p><h2>Notes</h2>
+
+<p>Some programs imprudently rely on code such as the following
+</p><p>sprintf(buf, "%s some further text", buf);
+</p><p>to append text to <i>buf</i>. However, the standards explicitly note that the results are undefined if source and destination buffers overlap when calling
+<b>sprintf</b>(), <b>snprintf</b>(), <b>vsprintf</b>(), and <b>vsnprintf</b>(). Depending on the version of <b><a href="https://linux.die.net/man/1/gcc" rel="nofollow">gcc</a></b>(1) used, and the compiler options
+employed, calls such as the above will <b>not</b> produce the expected results.
+</p><p>The glibc implementation of the functions <b>snprintf</b>() and <b>vsnprintf</b>() conforms to the C99 standard, that is, behaves as described above, since
+glibc version 2.1. Until glibc 2.0.6 they would return -1 when the output was truncated.
+</p><h2>Bugs</h2>
+
+<p>Because <b>sprintf</b>() and <b>vsprintf</b>() assume an arbitrarily long string, callers must be careful not to overflow the actual space; this is often
+impossible to assure. Note that the length of the strings produced is locale-dependent and difficult to predict. Use <b>snprintf</b>() and <b>vsnprintf</b>()
+instead (or <b><a href="https://linux.die.net/man/3/asprintf">asprintf</a></b>(3) and <b><a href="https://linux.die.net/man/3/vasprintf">vasprintf</a></b>(3)).
+</p><p>Linux libc4.[45] does not have a <b>snprintf</b>(), but provides a libbsd that contains an <b>snprintf</b>() equivalent to <b>sprintf</b>(), that is, one
+that ignores the <i>size</i> argument. Thus, the use of <b>snprintf</b>() with early libc4 leads to serious security problems.
+</p><p>Code such as <b>printf(</b><i>foo</i><b>);</b> often indicates a bug, since <i>foo</i> may contain a % character. If <i>foo</i> comes from untrusted user
+input, it may contain <b>%n</b>, causing the <b>printf</b>() call to write to memory and creating a security hole.
+</p><h2>Example</h2>
+
+<p>To print <i>Pi</i> to five decimal places:
+</p><dl compact="">
+<dd>
+
+<pre class="code">#include &lt;<a href="https://linux.die.net/include/math.h" rel="nofollow">math.h</a>&gt;
+#include &lt;<a href="https://linux.die.net/include/stdio.h" rel="nofollow">stdio.h</a>&gt;
+fprintf(stdout, "pi = %.5f\n", 4 * atan(1.0));</pre>
+</dd><dt>To print a date and time in the form "Sunday, July 3, 10:02", where <i>weekday</i> and <i>month</i> are pointers to strings:
+</dt><dd>
+
+<pre class="code">#include &lt;<a href="https://linux.die.net/include/stdio.h" rel="nofollow">stdio.h</a>&gt;
+fprintf(stdout, "%s, %s %d, %.2d:%.2d\n",
+        weekday, month, day, hour, min);</pre>
+</dd><dt>Many countries use the day-month-year order. Hence, an internationalized version must be able to print the arguments in an order specified by the
+format:
+</dt><dd>
+
+<pre class="code">#include &lt;<a href="https://linux.die.net/include/stdio.h" rel="nofollow">stdio.h</a>&gt;
+fprintf(stdout, format,
+        weekday, month, day, hour, min);</pre>
+</dd><dt>where <i>format</i> depends on locale, and may permute the arguments. With the value:
+</dt><dd>
+
+<pre class="code">"%1$s, %3$d. %2$s, %4$d:%5$.2d\n"</pre>
+</dd><dt>one might obtain "Sonntag, 3. Juli, 10:02".
+<p>To allocate a sufficiently large string and print into it (code correct for both glibc 2.0 and glibc 2.1):
+</p><p>If truncation occurs in glibc versions prior to 2.0.6, this is treated as an error instead of being handled gracefully.
+</p><pre class="code">#include &lt;<a href="https://linux.die.net/include/stdio.h" rel="nofollow">stdio.h</a>&gt;
+#include &lt;<a href="https://linux.die.net/include/stdlib.h" rel="nofollow">stdlib.h</a>&gt;
+#include &lt;stdarg.h&gt;
+
+char *
+make_message(const char *fmt, ...)
+{
+    int n;
+    int size = 100;     /* Guess we need no more than 100 bytes */
+    char *p, *np;
+    va_list ap;
+
+   if ((p = malloc(size)) == NULL)
+        return NULL;
+
+   while (1) {
+
+       /* Try to print in the allocated space */
+
+       va_start(ap, fmt);
+        n = vsnprintf(p, size, fmt, ap);
+        va_end(ap);
+
+       /* Check error code */
+
+       if (n &lt; 0)
+            return NULL;
+
+       /* If that worked, return the string */
+
+       if (n &lt; size)
+            return p;
+
+       /* Else try again with more space */
+
+       size = n + 1;       /* Precisely what is needed */
+
+       if ((np = realloc (p, size)) == NULL) {
+            <b>free</b>(p);
+            return NULL;
+        } else {
+            p = np;
+        }
+    }
+}</pre>
+</dt></dl>
+<h2>See Also</h2>
+
+<p><b><a href="https://linux.die.net/man/1/printf">printf</a></b>(1), <b><a href="https://linux.die.net/man/3/asprintf" rel="nofollow">asprintf</a></b>(3), <b><a href="https://linux.die.net/man/3/dprintf">dprintf</a></b>(3), <b><a href="https://linux.die.net/man/3/scanf">scanf</a></b>(3), <b><a href="https://linux.die.net/man/3/setlocale">setlocale</a></b>(3), <b><a href="https://linux.die.net/man/3/wcrtomb" rel="nofollow">wcrtomb</a></b>(3), <b><a href="https://linux.die.net/man/3/wprintf">wprintf</a></b>(3),
+<b><a href="https://linux.die.net/man/5/locale">locale</a></b>(5)
+
+<!-- google_ad_section_end -->
+</p><h2>Referenced By</h2>
+<b><a href="https://linux.die.net/man/3/archive_util" rel="nofollow">archive_util</a></b>(3),
+<b><a href="https://linux.die.net/man/1/aunpack" rel="nofollow">aunpack</a></b>(1),
+<b><a href="https://linux.die.net/man/3/avc_init" rel="nofollow">avc_init</a></b>(3),
+<b><a href="https://linux.die.net/man/3/benchmark" rel="nofollow">benchmark</a></b>(3),
+<b><a href="https://linux.die.net/man/5/collectd.conf" rel="nofollow">collectd.conf</a></b>(5),
+<b><a href="https://linux.die.net/man/3/curl_mprintf" rel="nofollow">curl_mprintf</a></b>(3),
+<b><a href="https://linux.die.net/man/1/efax" rel="nofollow">efax</a></b>(1),
+<b><a href="https://linux.die.net/man/1/efix" rel="nofollow">efix</a></b>(1),
+<b><a href="https://linux.die.net/man/3/err" rel="nofollow">err</a></b>(3),
+<b><a href="https://linux.die.net/man/3/errno" rel="nofollow">errno</a></b>(3),
+<b><a href="https://linux.die.net/man/3/error" rel="nofollow">error</a></b>(3),
+<b><a href="https://linux.die.net/man/3/explain" rel="nofollow">explain</a></b>(3),
+<b><a href="https://linux.die.net/man/3/explain_output" rel="nofollow">explain_output</a></b>(3),
+<b><a href="https://linux.die.net/man/3/explain_printf" rel="nofollow">explain_printf</a></b>(3),
+<b><a href="https://linux.die.net/man/3/explain_printf_or_die" rel="nofollow">explain_printf_or_die</a></b>(3),
+<b><a href="https://linux.die.net/man/1/find" rel="nofollow">find</a></b>(1),
+<b><a href="https://linux.die.net/man/1/flowdumper" rel="nofollow">flowdumper</a></b>(1),
+<b><a href="https://linux.die.net/man/3/fmtcheck" rel="nofollow">fmtcheck</a></b>(3),
+<b><a href="https://linux.die.net/man/3/fwprintf" rel="nofollow">fwprintf</a></b>(3),
+<b><a href="https://linux.die.net/man/3/gcvt" rel="nofollow">gcvt</a></b>(3),
+<b><a href="https://linux.die.net/man/3/gl_printf" rel="nofollow">gl_printf</a></b>(3),
+<b><a href="https://linux.die.net/man/1/gvpr" rel="nofollow">gvpr</a></b>(1),
+<b><a href="https://linux.die.net/man/3/hdf_set_valuef" rel="nofollow">hdf_set_valuef</a></b>(3),
+<b><a href="https://linux.die.net/man/3/im_istiff" rel="nofollow">im_istiff</a></b>(3),
+<b><a href="https://linux.die.net/man/3/im_updatehist" rel="nofollow">im_updatehist</a></b>(3),
+<b><a href="https://linux.die.net/man/3/iv_set_fatal_msg_handler" rel="nofollow">iv_set_fatal_msg_handler</a></b>(3),
+<b><a href="https://linux.die.net/man/3/libraptor" rel="nofollow">libraptor</a></b>(3),
+<b><a href="https://linux.die.net/man/7/locale" rel="nofollow">locale</a></b>(7),
+<b><a href="https://linux.die.net/man/3/localeconv" rel="nofollow">localeconv</a></b>(3),
+<b><a href="https://linux.die.net/man/5/magic" rel="nofollow">magic</a></b>(5),
+<b><a href="https://linux.die.net/man/1/mirrordir" rel="nofollow">mirrordir</a></b>(1),
+<b><a href="https://linux.die.net/man/1/mp2enc" rel="nofollow">mp2enc</a></b>(1),
+<b><a href="https://linux.die.net/man/1/mplex" rel="nofollow">mplex</a></b>(1),
+<b><a href="https://linux.die.net/man/5/muttrc" rel="nofollow">muttrc</a></b>(5),
+<b><a href="https://linux.die.net/man/1/nawk" rel="nofollow">nawk</a></b>(1),
+<b><a href="https://linux.die.net/man/3/numa" rel="nofollow">numa</a></b>(3),
+<b><a href="https://linux.die.net/man/3/panicva" rel="nofollow">panicva</a></b>(3),
+<b><a href="https://linux.die.net/man/2/perf_event_open" rel="nofollow">perf_event_open</a></b>(2),
+<b><a href="https://linux.die.net/man/1/perlfunc" rel="nofollow">perlfunc</a></b>(1),
+<b><a href="https://linux.die.net/man/1/perlipc" rel="nofollow">perlipc</a></b>(1),
+<b><a href="https://linux.die.net/man/1/pic" rel="nofollow">pic</a></b>(1),
+<b><a href="https://linux.die.net/man/3/pmnumberstr" rel="nofollow">pmnumberstr</a></b>(3),
+<b><a href="https://linux.die.net/man/1/ps" rel="nofollow">ps</a></b>(1),
+<b><a href="https://linux.die.net/man/3/rpc" rel="nofollow">rpc</a></b>(3),
+<b><a href="https://linux.die.net/man/3/rpc_clnt_calls" rel="nofollow">rpc_clnt_calls</a></b>(3),
+<b><a href="https://linux.die.net/man/8/rpm" rel="nofollow">rpm</a></b>(8),
+<b><a href="https://linux.die.net/man/3/selinux_set_callback" rel="nofollow">selinux_set_callback</a></b>(3),
+<b><a href="https://linux.die.net/man/3/setbuf" rel="nofollow">setbuf</a></b>(3),
+<b><a href="https://linux.die.net/man/8/snmptrapd" rel="nofollow">snmptrapd</a></b>(8),
+<b><a href="https://linux.die.net/man/1/spax" rel="nofollow">spax</a></b>(1),
+<b><a href="https://linux.die.net/man/5/sssd.conf" rel="nofollow">sssd.conf</a></b>(5),
+<b><a href="https://linux.die.net/man/3/syslog" rel="nofollow">syslog</a></b>(3),
+<b><a href="https://linux.die.net/man/3/tcl_setpanicproc" rel="nofollow">tcl_setpanicproc</a></b>(3),
+<b><a href="https://linux.die.net/man/1/tcpstat" rel="nofollow">tcpstat</a></b>(1),
+<b><a href="https://linux.die.net/man/5/terminfo" rel="nofollow">terminfo</a></b>(5),
+<b><a href="https://linux.die.net/man/1/uni2ascii" rel="nofollow">uni2ascii</a></b>(1),
+<b><a href="https://linux.die.net/man/5/urlview.conf" rel="nofollow">urlview.conf</a></b>(5),
+<b><a href="https://linux.die.net/man/3/uuid_parse" rel="nofollow">uuid_parse</a></b>(3),
+<b><a href="https://linux.die.net/man/3/wprintw" rel="nofollow">wprintw</a></b>(3),
+<b><a href="https://linux.die.net/man/3/xosd_display" rel="nofollow">xosd_display</a></b>(3)
+<div id="adbottom">
+<script async="" src="./printref3_files/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5823754184406795" data-ad-slot="8789940313" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:336px;height:280px;" src="./printref3_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+</div>
+<div id="menu">
+<dl>
+<dt>Site Search</dt>
+<dd>
+<form id="cse-search-box-menu" action="https://www.die.net/search/">
+<input name="q" type="text" size="10">
+<input type="hidden" name="sa" value="Search">
+<input type="hidden" name="ie" value="ISO-8859-1">
+<input type="hidden" name="cx" value="partner-pub-5823754184406795:54htp1rtx5u">
+<input type="hidden" name="cof" value="FORID:9">
+</form>
+<script type="text/javascript">
+<!--
+document.forms["cse-search-box-menu"].action = "https://www.die.net/search/";
+// -->
+</script>
+</dd></dl>
+
+
+
+<dl>
+<dt>Library</dt>
+<dd><a href="https://linux.die.net/">linux docs</a></dd>
+<dd><a href="https://linux.die.net/man/">linux man pages</a></dd>
+<dd><a href="https://www.die.net/musings/page_load_time/">page load time</a></dd>
+</dl>
+<dl>
+<dt>Toys</dt>
+<dd><a href="https://www.die.net/earth/">world sunlight</a></dd>
+<dd><a href="https://www.die.net/moon/">moon phase</a></dd>
+<dd><a href="http://trace.die.net/">trace explorer</a></dd>
+</dl>
+
+
+<dl>
+<dt><a href="https://linux.die.net/man/3/"><img src="./printref3_files/back.gif" alt="Back" width="20" height="22"></a></dt><dd></dd>
+</dl>
+</div></div>
+<script type="text/javascript">
+<!--
+if (top.location != self.location) top.location = self.location;
+if (/[?&][pq]=/.test(document.referrer)) document.write(unescape("%3Cscript src='/style/highlight.js' type='text/javascript'%3E%3C/script%3E"));
+function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en', floatPosition: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, gaTrack: true, gaId: 'UA-50820-6'});}
+if (!/^en/i.test(window.navigator.userLanguage||window.navigator.language)) document.write(unescape("%3Cscript src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit' type='text/javascript'%3E%3C/script%3E"));
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+// -->
+</script>
+
+
+</body></html>
