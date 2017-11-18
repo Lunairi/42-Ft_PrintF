@@ -26,7 +26,7 @@ void	flags_adr(va_list args, int *p)
 
 	output = va_arg(args, void*);
 	address = (unsigned int)(output);
-	write(1, "0x7fff", 2);
+	write(1, "0x7fff", 6);
 	*p = *p + 2;
 	ft_puthex(address, p);
 }
