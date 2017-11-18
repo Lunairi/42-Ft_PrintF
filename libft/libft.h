@@ -105,5 +105,7 @@ void				ft_puthex(unsigned int n, int *p);
 void				ft_putuhex(unsigned int n, int *p);
 void				ft_putstrf(char const *s, int *p);
 void				ft_putnbrf(int n, int *p);
+size_t				ft_numulen(unsigned int n);
+void				ft_putadr(unsigned long n, int *p);
 
 #endif
