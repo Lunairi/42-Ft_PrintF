@@ -93,6 +93,7 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'l' && str[*i + 1] == 'l' ? parse_ll(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] != 'l' ? parse_l(args, p, str, i) : 0;
 	str[*i] == 'D' || str[*i + 1] == 'U' ? parse_l(args, p, str, i) : 0;
+	str[*i] == 'j' ? parse_j(args, p, str, i) : 0;
 	str[*i] == 'O' ? parse_l(args, p, str, i) : 0;
 	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
 	str[*i] > '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
