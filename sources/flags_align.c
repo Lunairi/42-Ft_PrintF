@@ -91,20 +91,6 @@ void	parse_rightalign(int *i, const char *str, va_list args, int *p)
 	flag_ralign(str, args, align, i, p);
 }
 
-// void	flags_leftalign(int *i, const char *str, va_list args, int *p)
-// {
-// 	int check;
-// 	if (str[*i] == 'd' || str[*i] == 'i')
-// 	{
-// 		check = va_arg(args, int);
-// 		if (check < 0)
-// 			*p = *p + 1;
-// 		ft_putnbrf(check, p);
-// 	}
-// 	else
-// 		parse_flags(i, str, args, p);
-// }
-
 void	parse_leftalign(int *i, const char *str, va_list args, int *p)
 {
 	int count;

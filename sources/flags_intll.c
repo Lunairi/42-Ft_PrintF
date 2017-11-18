@@ -48,7 +48,7 @@ void	flags_uintll(va_list args, int *p)
 	unsigned long long output;
 
 	output = (unsigned long long)va_arg(args, void*);
-	ft_putunbr((unsigned int)output, p);
+	ft_putull((unsigned long long)output, p);
 }
 
 void	flags_intll(va_list args, int *p)
