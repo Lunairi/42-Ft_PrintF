@@ -56,5 +56,5 @@ void	flags_intl(va_list args, int *p)
 	long output;
 
 	output = (long)va_arg(args, void*);
-	ft_putnbrf((int)output, p);
+	ft_putld((long)output, p);
 }
