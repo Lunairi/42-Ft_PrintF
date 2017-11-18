@@ -84,11 +84,11 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 		*p = *p + 1;
 		ft_putchar(output);
 	}
-	else
+	else if (str[*i] == 'S')
 	{
-		output = (char*)va_arg(args, void*);
+		output = va_arg(args, void*);
 		if (output != NULL)
-			ft_putstrf(output, p);
+			ft_putstrf((char*)output, p);
 	}
 	// if (output != NULL)
 	// 	ft_putstrf(output, p);
