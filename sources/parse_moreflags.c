@@ -23,13 +23,13 @@ void	parse_j(va_list args, int *p, const char *str, int *i)
 	str[*i] == 'X' ? flags_uhexj(args, p) : 0;
 }
 
-void	parse_z(va_list args, int *p, const char *str, int *i)
-{
-	*i = *i + 2;
-	str[*i] == 'd' ? flags_intz(args, p) : 0;
-	str[*i] == 'i' ? flags_intz(args, p) : 0;
-	str[*i] == 'u' ? flags_uintz(args, p) : 0;
-	str[*i] == 'o' ? flags_octz(args, p) : 0;
-	str[*i] == 'x' ? flags_hexz(args, p) : 0;
-	str[*i] == 'X' ? flags_uhexz(args, p) : 0;
-}
+// void	parse_z(va_list args, int *p, const char *str, int *i)
+// {
+// 	*i = *i + 2;
+// 	str[*i] == 'd' ? flags_intz(args, p) : 0;
+// 	str[*i] == 'i' ? flags_intz(args, p) : 0;
+// 	str[*i] == 'u' ? flags_uintz(args, p) : 0;
+// 	str[*i] == 'o' ? flags_octz(args, p) : 0;
+// 	str[*i] == 'x' ? flags_hexz(args, p) : 0;
+// 	str[*i] == 'X' ? flags_uhexz(args, p) : 0;
+// }
