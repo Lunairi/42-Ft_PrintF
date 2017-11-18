@@ -53,4 +53,12 @@ void	flags_per(va_list args, int *p);
 void	flags_str(va_list args, int *p);
 void	flags_char(va_list args, int *p);
 
+/*
+** flags_spc.
+*/
+
+void	flags_ws(va_list args, int *p, const char *str, int *i);
+void	flags_plus(va_list args, int *p, const char *str, int *i);
+void	flags_hash(va_list args, int *p, const char *str, int *i);
+
 #endif

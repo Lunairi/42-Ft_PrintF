@@ -50,13 +50,13 @@ int		ft_printf(const char *str, ...)
 int		main(int ac, char **av)
 {
 	void *a;
-	a = 0;
-	ft_printf("test |%17d| %d", 18, 125);
-	printf("\ntest |%9.7d| |%5.3s|", 18, "Test");
+	// a = 0;
+	ft_printf("test |%17s| |%-15d| %#X", "test", 25, 6666);
+	printf("\ntest |%17s| |%-15d| %#X", "test", 25, 6666);
 	// write(1, "\n", 1);
-	// ft_printf("%X", ft_printf("%d%c%x", 45, 'S', 8652373));
+	// ft_printf("%X", ft_printf("%d", 2));
 	// write(1, "\n", 1);
-	// printf("%X", printf("%d%c%x", 45, 'S', 8652373));
+	// printf("%X", printf("%d", 2));
 	// printf("Test %d", 25);
 	return (0);
 }

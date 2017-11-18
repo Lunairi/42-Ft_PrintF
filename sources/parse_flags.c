@@ -13,14 +13,8 @@
 #include "printf.h"
 
 /*
-** You have to manage the following conversions: SDOUC (ls ld lo lu lc)
-** • You must manage the flags hh, h, l, ll, j, z.
-*/
-
-/*
-** Completed: s d i o u x c X %% p
-** In Progress: precision + 0 # space
-** Weird Errors: - minfieldwidth
+** Completed: s d i o u x c X %% p + space #
+** In Progress: precision 0 hh h ll j z l(SDOUC)
 */
 
 /*
@@ -133,8 +127,6 @@ void	parse_leftalign(int *i, const char *str, va_list args, int *p) // has error
 void	parse_flags(int *i, const char *str, va_list args, int *p)
 {
 	*i = *i + 1;
-	// str[*i] == '+' ? flags_int(args, p) : 0;
-	// str[*i] == ' ' ? flags_int(args, p) : 0;
 	str[*i] == 'd' ? flags_int(args, p) : 0;
 	str[*i] == 'i' ? flags_int(args, p) : 0;
 	str[*i] == 'u' ? flags_uint(args, p) : 0;
@@ -145,6 +137,9 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
 	str[*i] == '%' ? flags_per(args, p) : 0;
+	str[*i] == '+' ? flags_plus(args, p, str, i) : 0;
+	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
 	str[*i] >= '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
 	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
+	str[*i] == ' ' ? flags_ws(args, p, str, i) : 0;
 }
