@@ -53,8 +53,8 @@ void	flags_uintz(va_list args, int *p)
 
 void	flags_intz(va_list args, int *p)
 {
-	signed size_t output;
+	ssize_t output;
 
-	output = (signed size_t)va_arg(args, void*);
+	output = (ssize_t)va_arg(args, void*);
 	ft_putnbrf((int)output, p);
 }
