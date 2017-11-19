@@ -14,7 +14,7 @@
 
 void	parse_j(va_list args, int *p, const char *str, int *i)
 {
-	*i = *i + 2;
+	*i = *i + 1;
 	str[*i] == 'd' ? flags_intj(args, p) : 0;
 	str[*i] == 'i' ? flags_intj(args, p) : 0;
 	str[*i] == 'u' ? flags_uintj(args, p) : 0;
