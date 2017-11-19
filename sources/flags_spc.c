@@ -58,7 +58,12 @@ void	flags_plus(va_list args, int *p, const char *str, int *i)
 	else if (str[*i + 1] > '0' || str[*i + 1] <= '9')
 		parse_rightpalign(i, str, args, p);
 	else if (str[*i] == '0')
+	{
+		*p = *p + 1;
+		write(1, "+", 1);
+		*i = *i + 1;
 		parse_zero(i, str, args, p);
+	}
 	else
 		parse_flags(i, str, args, p);
 }
