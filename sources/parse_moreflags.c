@@ -25,7 +25,7 @@ void	parse_j(va_list args, int *p, const char *str, int *i)
 
 void	parse_z(va_list args, int *p, const char *str, int *i)
 {
-	*i = *i + 2;
+	*i = *i + 1;
 	str[*i] == 'd' ? flags_intz(args, p) : 0;
 	str[*i] == 'i' ? flags_intz(args, p) : 0;
 	str[*i] == 'u' ? flags_uintz(args, p) : 0;
