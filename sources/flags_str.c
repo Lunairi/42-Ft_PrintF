@@ -60,8 +60,7 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 		if(str[*i] == 'l')
 			*i = *i + 1;
 		output = va_arg(args, wchar_t*);
-		len = ft_strlen(output);
 		if (output != NULL)
-			write(1, output, len);
+			ft_putwstrf(output, p);
 	}
 }
