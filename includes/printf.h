@@ -36,6 +36,7 @@ void	parse_flags(int *i, const char *str, va_list args, int *p);
 ** parse_moreflags.c
 */
 void	parse_j(va_list args, int *p, const char *str, int *i);
+void	parse_z(va_list args, int *p, const char *str, int *i);
 
 /*
 ** flags_align.c
@@ -48,6 +49,11 @@ void	parse_leftalign(int *i, const char *str, va_list args, int *p);
 */
 void	parse_rightpalign(int *i, const char *str, va_list args, int *p);
 void	parse_leftpalign(int *i, const char *str, va_list args, int *p);
+
+/*
+** flags_zero.c
+*/
+void	parse_zero(int *i, const char *str, va_list args, int *p);
 
 /*
 ** flags_int.c
@@ -128,7 +134,6 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i);
 /*
 ** flags_spc.
 */
-
 void	flags_ws(va_list args, int *p, const char *str, int *i);
 void	flags_plus(va_list args, int *p, const char *str, int *i);
 void	flags_hash(va_list args, int *p, const char *str, int *i);

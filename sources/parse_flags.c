@@ -97,6 +97,7 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'z' ? parse_z(args, p, str, i) : 0;
 	str[*i] == 'O' ? parse_l(args, p, str, i) : 0;
 	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
+	str[*i] == '0' ? parse_zero(i, str, args, p) : 0;
 	str[*i] > '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
 	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
 	str[*i] == ' ' ? flags_ws(args, p, str, i) : 0;
