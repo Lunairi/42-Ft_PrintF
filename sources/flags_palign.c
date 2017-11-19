@@ -63,7 +63,6 @@ void	flag_rpaligna(const char *str, void *check, int *i, int *p)
 void	flag_rpalign(const char *str, va_list args, int *i, int *p)
 {
 	void			*check;
-	unsigned long	address;
 
 	check = va_arg(args, void*);
 	if (str[*i] == 'd' || str[*i] == 'i')

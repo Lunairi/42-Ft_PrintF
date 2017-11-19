@@ -37,7 +37,6 @@ void	ft_putspacez(int s, int size, int *p)
 void	flag_ralignz(const char *str, va_list args, int *i, int *p)
 {
 	void			*check;
-	unsigned long	address;
 
 	check = va_arg(args, void*);
 	if (str[*i] == 'd' || str[*i] == 'i')
@@ -73,7 +72,6 @@ void	parse_zero(int *i, const char *str, va_list args, int *p)
 void	flag_pralignz(const char *str, va_list args, int *i, int *p)
 {
 	void			*check;
-	unsigned long	address;
 
 	check = va_arg(args, void*);
 	g_alignz = g_alignz - 1;

@@ -70,7 +70,7 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'X' ? flags_uhex(args, p) : 0;
 	str[*i] == 'c' ? flags_char(args, p) : 0;
 	str[*i] == 'p' ? flags_adr(args, p) : 0;
-	str[*i] == '%' ? flags_per(args, p) : 0;
+	str[*i] == '%' ? flags_per(p) : 0;
 	str[*i] == 'C' || str[*i] == 'S' ? flags_wchar(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] == 's' ? flags_wchar(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] == 'c' ? flags_wchar(args, p, str, i) : 0;

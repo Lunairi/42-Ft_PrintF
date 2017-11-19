@@ -31,7 +31,7 @@ void	flags_adr(va_list args, int *p)
 	ft_putadr(address, p);
 }
 
-void	flags_per(va_list args, int *p)
+void	flags_per(int *p)
 {
 	*p = *p + 1;
 	write(1, "%", 1);
