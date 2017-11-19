@@ -56,13 +56,21 @@ void	parse_zero(int *i, const char *str, va_list args, int *p)
 
 	count = *p;
 	g_alignz = 0;
-	while (str[*i] >= '0' && str[*i] <= '9')
+	if (str[*i + 1] == '+')
 	{
-		if (str[*i] >= '0' && str[*i] <= '9')
-			g_alignz = g_alignz * 10 + (str[*i] - '0');
 		*i = *i + 1;
+		flags_plus(args, p, str, i);
 	}
-	flag_ralignz(str, args, i, p);
+	else
+	{
+		while (str[*i] >= '0' && str[*i] <= '9')
+		{
+			if (str[*i] >= '0' && str[*i] <= '9')
+				g_alignz = g_alignz * 10 + (str[*i] - '0');
+			*i = *i + 1;
+		}
+		flag_ralignz(str, args, i, p);
+	}
 }
 
 void	flag_pralignz(const char *str, va_list args, int *i, int *p)

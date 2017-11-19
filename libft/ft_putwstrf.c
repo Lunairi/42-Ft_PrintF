@@ -19,7 +19,7 @@ void	ft_putwstrf(wchar_t* s, int *p)
 	x = -1;
 	while (s[++x] != '\0')
 	{
-		ft_putchar(s[x]);
+		write(1, &s[x], 1);
 		*p = *p + 1;
 	}
 }

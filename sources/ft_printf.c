@@ -55,8 +55,10 @@ int		ft_printf(const char *str, ...)
 // 	short c = 35000;
 // 	unsigned short f = 999;
 // 	// a = 0
-// 	ft_printf("test %0d %04i %05i %0i %+04d", 0000042, 42, 42, 42, 42);
-// 	printf("\ntest %0d %04i %05i %0i %+04d", 0000042, 42, 42, 42, 42);
+// 	ft_printf("%%+04d 42 == %0+04d\n", 42);
+// 	write(1, "\n", 1);
+// 	ft_printf("test %0d %04i %05i %0i %0+04d", 0000042, 42, 42, 42, 42);
+// 	printf("\ntest %0d %04i %05i %0i %0+04d", 0000042, 42, 42, 42, 42);
 // // write(1, "\n", 1);
 // 	// ft_printf("%X", ft_printf("%d", 2));
 // 	// write(1, "\n", 1);
