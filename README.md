@@ -6,8 +6,8 @@ Day 1 progress (about 8 hours)
 - Incomplete: hh h l ll j z [SDOUC (ls ld lo lu lc)]
 - In Progress: precision + 0 # space
 
-Day 2 progress (about 9 hours)
+Day 2 progress (about 8 hours)
 - Completed: s d i o u x c X %% p - minwidthfield hh h l ll j z [SDOUC (ls ld lo lu lc)] + 0 # space
 - In Progress: precision
 
-Decided to turn in Printf without completing precisions or bonus, mostly due to wanting to go down the algorithm path and try out more other stuff. It took about 17 hours to write this printf and handles all of the above modifiers. Repo testing continusouly on http://ftprintf.com/
+Decided to turn in Printf without completing precisions or bonus, mostly due to wanting to go down the algorithm path and try out more other stuff. It took about 16 hours to write this printf and handles all of the above modifiers. Repo testing continusouly on http://ftprintf.com/
