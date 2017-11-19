@@ -54,7 +54,7 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	}
 	else if (str[*i] == 'S')
 	{
-		output = va_arg(args, void*);
+		output = va_arg(args, wchar_t*);
 		if (output != NULL)
 			ft_putstrf((char*)output, p);
 	}

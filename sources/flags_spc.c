@@ -61,7 +61,7 @@ void	flags_plus(va_list args, int *p, const char *str, int *i)
 	{
 		*p = *p + 1;
 		write(1, "+", 1);
-		*i = *i + 1;
+		*i = *i + 2;
 		parse_zero(i, str, args, p);
 	}
 	else
