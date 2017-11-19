@@ -56,6 +56,6 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	{
 		output = va_arg(args, wchar_t*);
 		if (output != NULL)
-			ft_putstrf((wchar_t*)output, p);
+			ft_putstrf((L)(wchar_t*)output, p);
 	}
 }
