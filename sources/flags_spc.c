@@ -38,6 +38,12 @@ void	flags_ws(va_list args, int *p, const char *str, int *i)
 		parse_flags(i, str, args, p);
 }
 
+void	norm_plus(int *p)
+{
+	*p = *p + 1;
+	write(1, "+", 1);
+}
+
 void	flags_plus(va_list args, int *p, const char *str, int *i)
 {
 	int output;
@@ -46,17 +52,13 @@ void	flags_plus(va_list args, int *p, const char *str, int *i)
 	{
 		output = va_arg(args, int);
 		if (output >= 0)
-		{
-			*p = *p + 1;
-			write(1, "+", 1);
-		}
+			norm_plus(p);
 		*i = *i + 1;
 		ft_putnbrf(output, p);
 	}
 	else if (str[*i + 1] == '0')
 	{
-		*p = *p + 1;
-		write(1, "+", 1);
+		norm_plus(p);
 		*i = *i + 1;
 		parse_pzero(i, str, args, p);
 	}

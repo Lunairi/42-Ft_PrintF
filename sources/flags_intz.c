@@ -13,10 +13,7 @@
 #include "printf.h"
 
 /*
-** Flags address
-** %p outputs in flags_adr
-** %% outputs in flags_per
-** libft functions: ft_puthex
+** Helps to deal with z conversions
 */
 
 void	flags_uhexz(va_list args, int *p)

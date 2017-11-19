@@ -14,9 +14,7 @@
 
 /*
 ** Flags address
-** %p outputs in flags_adr
-** %% outputs in flags_per
-** libft functions: ft_puthex
+** Helps to handle hh conversions
 */
 
 void	flags_uhexhh(va_list args, int *p)
