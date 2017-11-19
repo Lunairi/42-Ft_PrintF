@@ -2,12 +2,12 @@
 First algorithm branch project: Recreating printf functionality. Completed November 18, 2017.
 
 Day 1 progress (about 8 hours)
-- Completed: s d i o u x c X %% p - minwidthfield
+- Completed: s d i o u x c X %% p - fieldwidth
 - Incomplete: hh h l ll j z [SDOUC (ls ld lo lu lc)]
 - In Progress: precision + 0 # space
 
 Day 2 progress (about 8 hours)
-- Completed: s d i o u x c X %% p - minwidthfield hh h l ll j z [SDOUC (ls ld lo lu lc)] + 0 # space
+- Completed: s d i o u x c X %% p - fieldwidth hh h l ll j z [SDOUC (ls ld lo lu lc)] + 0 # space
 - Incomplete: precision
 
 I've never used printf ever during my entire coding career during the five month I've been at 42. I had no idea any of the modifiers, any of the conversions, etc. Had no knowledge of stdargs library or even ellipsis. I decided to take on the challenge of trying to complete printf to the best of my knowledge and learn all of the necessities to make the project a success.
