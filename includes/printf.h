@@ -37,6 +37,8 @@ void	parse_flags(int *i, const char *str, va_list args, int *p);
 */
 void	parse_j(va_list args, int *p, const char *str, int *i);
 void	parse_z(va_list args, int *p, const char *str, int *i);
+void	parse_l(va_list args, int *p, const char *str, int *i);
+void	parse_ll(va_list args, int *p, const char *str, int *i);
 
 /*
 ** flags_align.c

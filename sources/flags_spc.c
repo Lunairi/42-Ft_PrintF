@@ -13,10 +13,7 @@
 #include "printf.h"
 
 /*
-** Flags address
-** %p outputs in flags_adr
-** %% outputs in flags_per
-** libft functions: ft_puthex
+** Handles whitespace, plus and hash
 */
 
 void	flags_ws(va_list args, int *p, const char *str, int *i)

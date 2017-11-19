@@ -23,35 +23,6 @@
 ** can be performed in the respective flags_ function
 */
 
-void	parse_ll(va_list args, int *p, const char *str, int *i)
-{
-	*i = *i + 2;
-	str[*i] == 'd' ? flags_intll(args, p) : 0;
-	str[*i] == 'i' ? flags_intll(args, p) : 0;
-	str[*i] == 'u' ? flags_uintll(args, p) : 0;
-	str[*i] == 'o' ? flags_octll(args, p) : 0;
-	str[*i] == 'x' ? flags_hexll(args, p) : 0;
-	str[*i] == 'X' ? flags_uhexll(args, p) : 0;
-}
-
-void	parse_l(va_list args, int *p, const char *str, int *i)
-{
-	*i = *i + 1;
-	str[*i] == 'd' ? flags_intl(args, p) : 0;
-	str[*i] == 'i' ? flags_intl(args, p) : 0;
-	str[*i] == 'u' ? flags_uintl(args, p) : 0;
-	str[*i] == 'o' ? flags_octl(args, p) : 0;
-	str[*i] == 'x' ? flags_hexl(args, p) : 0;
-	str[*i] == 'X' ? flags_uhexl(args, p) : 0;
-	if (str[*i - 1] == 'D' || str[*i - 1] == 'O' || str[*i - 1] == 'U')
-	{
-		*i = *i - 1;
-		str[*i] == 'D' ? flags_intl(args, p) : 0;
-		str[*i] == 'U' ? flags_uintl(args, p) : 0;
-		str[*i] == 'O' ? flags_octl(args, p) : 0;
-	}
-}
-
 void	parse_hh(va_list args, int *p, const char *str, int *i)
 {
 	*i = *i + 2;
@@ -72,6 +43,19 @@ void	parse_h(va_list args, int *p, const char *str, int *i)
 	str[*i] == 'o' ? flags_octh(args, p) : 0;
 	str[*i] == 'x' ? flags_hexh(args, p) : 0;
 	str[*i] == 'X' ? flags_uhexh(args, p) : 0;
+}
+
+void	parse_flagsc(int *i, const char *str, va_list args, int *p)
+{
+	str[*i] == 'j' ? parse_j(args, p, str, i) : 0;
+	str[*i] == 'z' ? parse_z(args, p, str, i) : 0;
+	str[*i] == 'O' ? parse_l(args, p, str, i) : 0;
+	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
+	str[*i] == '0' ? parse_zero(i, str, args, p) : 0;
+	str[*i] > '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
+	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
+	str[*i] == ' ' ? flags_ws(args, p, str, i) : 0;
+	str[*i] == '+' ? flags_plus(args, p, str, i) : 0;
 }
 
 void	parse_flags(int *i, const char *str, va_list args, int *p)
@@ -95,13 +79,5 @@ void	parse_flags(int *i, const char *str, va_list args, int *p)
 	str[*i] == 'l' && str[*i + 1] == 'l' ? parse_ll(args, p, str, i) : 0;
 	str[*i] == 'l' && str[*i + 1] != 'l' ? parse_l(args, p, str, i) : 0;
 	str[*i] == 'D' || str[*i + 1] == 'U' ? parse_l(args, p, str, i) : 0;
-	str[*i] == 'j' ? parse_j(args, p, str, i) : 0;
-	str[*i] == 'z' ? parse_z(args, p, str, i) : 0;
-	str[*i] == 'O' ? parse_l(args, p, str, i) : 0;
-	str[*i] == '#' ? flags_hash(args, p, str, i) : 0;
-	str[*i] == '0' ? parse_zero(i, str, args, p) : 0;
-	str[*i] > '0' && str[*i] <= '9' ? parse_rightalign(i, str, args, p) : 0;
-	str[*i] == '-' ? parse_leftalign(i, str, args, p) : 0;
-	str[*i] == ' ' ? flags_ws(args, p, str, i) : 0;
-	str[*i] == '+' ? flags_plus(args, p, str, i) : 0;
+	parse_flagsc(i, str, args, p);
 }

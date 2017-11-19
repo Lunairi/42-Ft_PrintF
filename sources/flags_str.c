@@ -16,6 +16,7 @@
 ** Flags String Of Characters
 ** %s outputs in flags_str
 ** %c outputs in flags_char
+** Also handles wchars
 ** libft functions: ft_putchar, ft_putstr
 */
 
@@ -44,12 +45,11 @@ void	flags_str(va_list args, int *p)
 
 void	flags_wchar(va_list args, int *p, const char *str, int *i)
 {
-	void *output;
-	ssize_t len;
+	void	*output;
 
 	if (str[*i] == 'C' || str[*i + 1] == 'c')
 	{
-		if(str[*i] == 'l')
+		if (str[*i] == 'l')
 			*i = *i + 1;
 		output = va_arg(args, void*);
 		*p = *p + 1;
@@ -57,7 +57,7 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	}
 	else if (str[*i] == 'S' || str[*i + 1] == 's')
 	{
-		if(str[*i] == 'l')
+		if (str[*i] == 'l')
 			*i = *i + 1;
 		output = va_arg(args, wchar_t*);
 		if (output != NULL)
