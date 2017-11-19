@@ -109,5 +109,6 @@ size_t				ft_numulen(unsigned int n);
 void				ft_putadr(unsigned long n, int *p);
 void				ft_putull(unsigned long long n, int *p);
 void				ft_putld(long n, int *p);
+void				ft_putwstrf(wchar_t* s, int *p);
 
 #endif
