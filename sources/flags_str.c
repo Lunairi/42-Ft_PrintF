@@ -45,6 +45,7 @@ void	flags_str(va_list args, int *p)
 void	flags_wchar(va_list args, int *p, const char *str, int *i)
 {
 	void *output;
+	ssize_t len;
 
 	if (str[*i] == 'C')
 	{
@@ -55,7 +56,8 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	else if (str[*i] == 'S')
 	{
 		output = va_arg(args, wchar_t*);
+		len = ft_strlen(output);
 		if (output != NULL)
-			ft_putwstrf((wchar_t*)output, p);
+			write(1, output, len);
 	}
 }
