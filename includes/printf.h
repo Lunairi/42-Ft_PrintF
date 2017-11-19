@@ -54,6 +54,7 @@ void	parse_leftpalign(int *i, const char *str, va_list args, int *p);
 ** flags_zero.c
 */
 void	parse_zero(int *i, const char *str, va_list args, int *p);
+void	parse_pzero(int *i, const char *str, va_list args, int *p);
 
 /*
 ** flags_int.c

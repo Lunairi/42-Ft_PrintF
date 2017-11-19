@@ -54,8 +54,8 @@ void	flags_wchar(va_list args, int *p, const char *str, int *i)
 	}
 	else if (str[*i] == 'S')
 	{
-		output = (wchar_t*)va_arg(args, wchar_t*);
+		output = va_arg(args, wchar_t*);
 		if (output != NULL)
-			ft_putstrf((wchar_t*)output, p);
+			ft_putwstrf((wchar_t*)output, p);
 	}
 }
