@@ -9,6 +9,7 @@ Day 1 progress (about 8 hours)
 Day 2 progress (about 8 hours)
 - Completed: s d i o u x c X %% p - fieldwidth hh h l ll j z [SDOUC (ls ld lo lu lc)] + 0 # space
 - Incomplete: precision
+- Note: I chose not to finish precision for this project so I can move onto more algorithm projects. Precision itself takes more time to debug and make sure all functionality of it works perfectly with every flag. Printf was a great learning tool and it was mostly intended for me to learn the functionality of printf and provide myself a working printf for future project, if I need precision I'll work on it (and also other bonus functions) in the future and add it to this repo.
 
 I've never used printf ever during my entire coding career during the five month I've been at 42. I had no idea any of the modifiers, any of the conversions, etc. Had no knowledge of stdargs library or even ellipsis (or even how printf works). I decided to take on the challenge of trying to complete printf to the best of my knowledge and learn all of the necessities to make the project a success.
 
